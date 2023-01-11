@@ -27,9 +27,10 @@ class NetworkService: NetworkProtocol {
     }
 
     func fetchData(entries: [String],
-                   completion: @escaping (Result<[SearchResponse], Error>) -> Void) {
-
+                   completion: @escaping (Result<[RecipeModel], Error>) -> Void) {
         //Check for empty
+        // check if entries has values
+
         let validEntries = entries.filter({ !$0.isEmpty })
 
         //Check for problematic characters like spaces or special characters
@@ -49,6 +50,7 @@ class NetworkService: NetworkProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = networkClient.dataTask(with: request) { data, response, error in
+
             //Handling response and error
             if let error = error {
                 completion(.failure(error))
@@ -59,14 +61,21 @@ class NetworkService: NetworkProtocol {
                 completion(.failure(APIError.noData))
                 return
             }
+            print(String(decoding: data, as: UTF8.self))
 
             do {
                 let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
-                // Create array of response
-                var result: [SearchResponse] = []
-                // Use append method to add a decoded response element to the result array
-                result.append(searchResponse)
-                completion(.success(result))
+
+                let recipeModel = searchResponse.hits.map { hit -> RecipeModel in
+                    let recipe = hit.recipe
+                    return RecipeModel(title: recipe.label,
+                                       duration: 30,
+                                       ingredients: recipe.ingredients,
+                                       note: 4.5,
+                                       images: recipe.images)
+                }
+//                let recipes = searchResponse.hits.map { $0.recipe }
+                completion(.success(recipeModel))
             } catch {
                 completion(.failure(error))
             }

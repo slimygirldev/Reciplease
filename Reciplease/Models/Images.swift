@@ -20,5 +20,6 @@ struct Images: Codable {
 
 struct Large: Codable {
     let url: String
-    let width, height: Int
+    let width: Int
+    let height: Int
 }

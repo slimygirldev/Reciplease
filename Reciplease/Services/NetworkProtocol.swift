@@ -15,5 +15,5 @@ protocol NetworkProtocol {
     var networkClient: URLSession { get }
     
     func fetchData(entries: [String],
-                   completion: @escaping (Result<[SearchResponse], Error>) -> Void)
+                   completion: @escaping (Result<[RecipeModel], Error>) -> Void)
 }
