@@ -8,19 +8,32 @@
 import Foundation
 
 struct Recipe: Codable {
-    let uri, label, image: String
+    let uri: String
+    let label: String
+    let image: String
     let images: Images
-    let source, url, shareAs: String
+    let source: String
+    let url: String
+    let shareAs: String
     let yield: Int
-    let dietLabels, healthLabels, cautions, ingredientLines: [String]
+    let dietLabels: String
+    let healthLabels: String
+    let cautions: String
+    let ingredientLines: [String]
     let ingredients: [Ingredient]
-    let calories, glycemicIndex, totalCO2Emissions: Int
+    let calories: Int
+    let glycemicIndex: Int
+    let totalCO2Emissions: Int
     let co2EmissionsClass: String
     let totalWeight: Int
-    let cuisineType, mealType, dishType, instructions: [String]
+    let cuisineType: [String]
+    let mealType: [String]
+    let dishType: [String]
+    let instructions: [String]
     let tags: [String]
     let externalID: String
-    let totalNutrients, totalDaily: TotalDaily
+    let totalNutrients: TotalDaily
+    let totalDaily: TotalDaily
     let digest: [Digest]
 
     enum CodingKeys: String, CodingKey {

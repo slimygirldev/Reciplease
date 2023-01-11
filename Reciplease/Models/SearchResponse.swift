@@ -9,7 +9,9 @@ import Foundation
 
 // MARK: - SearchResponse
 struct SearchResponse: Codable {
-    let from, to, count: Int
+    let from: Int
+    let to: Int
+    let count: Int
     let links: Links
     let hits: [Hit]
 
@@ -33,16 +35,18 @@ struct Hit: Codable {
 
 // MARK: - Links
 struct Links: Codable {
-    let linksSelf, next: Next
+//    let linksSelf: Next
+    let next: Next
 
     enum CodingKeys: String, CodingKey {
-        case linksSelf = "self"
+//        case linksSelf = "self"
         case next
     }
 }
 
 // MARK: - Next
 struct Next: Codable {
-    let href, title: String
+    let href: String
+    let title: String
 }
 

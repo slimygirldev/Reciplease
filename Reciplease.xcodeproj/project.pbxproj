@@ -21,6 +21,9 @@
 		988C5267296C438B00CDFD64 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5266296C438B00CDFD64 /* Images.swift */; };
 		988C5269296C576A00CDFD64 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5268296C576A00CDFD64 /* NetworkProtocol.swift */; };
 		988C526B296C5CFE00CDFD64 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526A296C5CFE00CDFD64 /* NetworkService.swift */; };
+		988C526D296DB26900CDFD64 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526C296DB26900CDFD64 /* RecipeModel.swift */; };
+		988C526F296DD14200CDFD64 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526E296DD14200CDFD64 /* SearchTableView.swift */; };
+		988C5274296EE3E600CDFD64 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 988C5273296EE3E600CDFD64 /* response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		988C5266296C438B00CDFD64 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		988C5268296C576A00CDFD64 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		988C526A296C5CFE00CDFD64 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		988C526C296DB26900CDFD64 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		988C526E296DD14200CDFD64 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
+		988C5273296EE3E600CDFD64 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,7 @@
 		988C523C2968BDBE00CDFD64 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
+				988C5270296EDE5F00CDFD64 /* Mock */,
 				988C52592968C12100CDFD64 /* AppleGenerated */,
 				988C525B296C3F5300CDFD64 /* Services */,
 				988C525A296C3AF900CDFD64 /* ViewModels */,
@@ -101,6 +108,7 @@
 				988C5262296C423900CDFD64 /* SearchResponse.swift */,
 				988C5264296C431600CDFD64 /* Ingredient.swift */,
 				988C5266296C438B00CDFD64 /* Images.swift */,
+				988C526C296DB26900CDFD64 /* RecipeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 		988C52542968BF5400CDFD64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				988C526E296DD14200CDFD64 /* SearchTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +154,14 @@
 				988C526A296C5CFE00CDFD64 /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		988C5270296EDE5F00CDFD64 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				988C5273296EE3E600CDFD64 /* response.json */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				988C5274296EE3E600CDFD64 /* response.json in Resources */,
 				988C524A2968BDBF00CDFD64 /* LaunchScreen.storyboard in Resources */,
 				988C52472968BDBF00CDFD64 /* Assets.xcassets in Resources */,
 			);
@@ -218,8 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				988C525D296C3F8900CDFD64 /* SearchViewModel.swift in Sources */,
+				988C526F296DD14200CDFD64 /* SearchTableView.swift in Sources */,
 				988C52422968BDBE00CDFD64 /* TabBarViewController.swift in Sources */,
 				988C5265296C431600CDFD64 /* Ingredient.swift in Sources */,
+				988C526D296DB26900CDFD64 /* RecipeModel.swift in Sources */,
 				988C5261296C403B00CDFD64 /* Recipe.swift in Sources */,
 				988C523E2968BDBE00CDFD64 /* AppDelegate.swift in Sources */,
 				988C5263296C423900CDFD64 /* SearchResponse.swift in Sources */,
