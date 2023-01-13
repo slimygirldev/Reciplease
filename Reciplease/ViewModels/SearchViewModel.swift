@@ -5,11 +5,18 @@
 //  Created by Lorene Brocourt on 09/01/2023.
 //
 
-import Foundation
+import UIKit
+
+protocol SearchViewModelDelegate: AnyObject {
+    func searchViewModelDelegateReloadTableView()
+
+    func searchViewModelDelegateShowError(_error: String)
+}
 
 class SearchViewModel {
+    weak var delegate: SearchTableViewDelegate?
 
-   // var tableView: SearchTableView
+    var tableView = SearchTableView(frame: .zero, style: .insetGrouped)
 
     private let networkService: NetworkService
 
@@ -19,7 +26,13 @@ class SearchViewModel {
 
     init(networkService: NetworkService) {
         self.networkService = networkService
+
     }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 
     func request() {
         if ingredientsList.isEmpty == false {
@@ -29,12 +42,15 @@ class SearchViewModel {
                 }
                 switch result {
                 case .failure(let error):
+//                    self.delegate?.searchViewModelDelegateShowError(error.localizedDescription)
                     print("error is : \(error.localizedDescription)")
                 case .success(let receivedRecipes):
                     self.recipes = receivedRecipes
+//                    self.delegate?.searchViewModelDelegateReloadTableView()
                 }
             }
         } else {
+            
             // here vm must notify that something went wrong
         
         }
