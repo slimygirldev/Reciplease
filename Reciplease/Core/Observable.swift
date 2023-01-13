@@ -7,14 +7,15 @@
 
 import Foundation
 
-class Observable<T> {
+final class Observable<T> {
     var value: T {
         didSet {
+            // whenever the value changes it's going to use listener
             self.listener?(value)
         }
     }
 
-    var listener: ((T) -> Void)?
+    private var listener: ((T) -> Void)?
 
     init(_ value: T) {
         self.value = value

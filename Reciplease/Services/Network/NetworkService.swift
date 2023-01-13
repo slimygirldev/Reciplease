@@ -15,6 +15,8 @@ enum APIError: Error {
 
 class NetworkService: NetworkProtocol {
 
+    static let shared = NetworkService(networkClient: .shared)
+
     private let apiKey: String = ""
     private let recipeUrl: String = "https://api.edamam.com/api/recipes/v2?"
     private let id: String = ""
@@ -22,7 +24,7 @@ class NetworkService: NetworkProtocol {
 
     var networkClient: URLSession
 
-    init(networkClient: URLSession) {
+     private init(networkClient: URLSession) {
         self.networkClient = networkClient
     }
 
@@ -30,7 +32,6 @@ class NetworkService: NetworkProtocol {
                    completion: @escaping (Result<[RecipeModel], Error>) -> Void) {
         //Check for empty
         // check if entries has values
-
         let validEntries = entries.filter({ !$0.isEmpty })
 
         //Check for problematic characters like spaces or special characters

@@ -7,26 +7,17 @@
 
 import UIKit
 
-protocol SearchViewModelDelegate: AnyObject {
-    func searchViewModelDelegateReloadTableView()
-
-    func searchViewModelDelegateShowError(_error: String)
-}
-
 class SearchViewModel {
-    weak var delegate: SearchTableViewDelegate?
+
+    var error: Observable<String?> = Observable(nil)
 
     var tableView = SearchTableView(frame: .zero, style: .insetGrouped)
-
-    private let networkService: NetworkService
 
     var ingredientsList: [String] = ["tomato"]
 
     var recipes: [RecipeModel] = []
 
-    init(networkService: NetworkService) {
-        self.networkService = networkService
-
+    init() {
     }
 
     required init?(coder: NSCoder) {
@@ -36,17 +27,16 @@ class SearchViewModel {
 
     func request() {
         if ingredientsList.isEmpty == false {
-            networkService.fetchData(entries: ingredientsList) { [weak self] result in
+            NetworkService.shared.fetchData(entries: ingredientsList) { [weak self] result in
                 guard let self = self else {
                     return
                 }
                 switch result {
                 case .failure(let error):
-//                    self.delegate?.searchViewModelDelegateShowError(error.localizedDescription)
+                    
                     print("error is : \(error.localizedDescription)")
                 case .success(let receivedRecipes):
                     self.recipes = receivedRecipes
-//                    self.delegate?.searchViewModelDelegateReloadTableView()
                 }
             }
         } else {

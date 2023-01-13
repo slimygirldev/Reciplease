@@ -8,9 +8,7 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
-    let searchViewModel: SearchViewModel = SearchViewModel(networkService: NetworkService(networkClient: .shared))
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -23,7 +21,7 @@ class TabBarViewController: UITabBarController {
 
     func setupVCs() {
         viewControllers = [
-            UINavigationController(rootViewController: SearchViewController(searchViewModel)),
+            UINavigationController(rootViewController: SearchViewController()),
             UINavigationController(rootViewController: FavoritesViewController())
         ]
         viewControllers?.forEach {
