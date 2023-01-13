@@ -90,6 +90,7 @@
 		988C523C2968BDBE00CDFD64 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
+				9894CAC3297199AB007B7995 /* Core */,
 				988C5270296EDE5F00CDFD64 /* Mock */,
 				988C52592968C12100CDFD64 /* AppleGenerated */,
 				988C525B296C3F5300CDFD64 /* Services */,
@@ -100,7 +101,6 @@
 				988C52512968BF3400CDFD64 /* Navigation */,
 				988C524B2968BDBF00CDFD64 /* Info.plist */,
 				988C527A296F236400CDFD64 /* Ressources */,
-				9894CAC3297199AB007B7995 /* Core */,
 			);
 			path = Reciplease;
 			sourceTree = "<group>";
