@@ -13,9 +13,9 @@ class SearchViewModel {
 
     var tableView = SearchTableView(frame: .zero, style: .insetGrouped)
 
-    var ingredientsList: [String] = ["tomato"]
+    var ingredientsList: Observable<[String]> = Observable(["tomato"])
 
-    var recipes: [RecipeModel] = []
+    var recipes: Observable<[RecipeModel]> = Observable([])
 
     init() {
     }
@@ -26,17 +26,14 @@ class SearchViewModel {
 
 
     func request() {
-        if ingredientsList.isEmpty == false {
-            NetworkService.shared.fetchData(entries: ingredientsList) { [weak self] result in
-                guard let self = self else {
-                    return
-                }
+        if ingredientsList.value.isEmpty == false {
+            NetworkService.shared.fetchData(entries: ingredientsList.value) { [weak self] result in
                 switch result {
                 case .failure(let error):
-                    
-                    print("error is : \(error.localizedDescription)")
+                    self?.error.value = error.localizedDescription
+                    print(error)
                 case .success(let receivedRecipes):
-                    self.recipes = receivedRecipes
+                    self?.recipes.value = receivedRecipes
                 }
             }
         } else {

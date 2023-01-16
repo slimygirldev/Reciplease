@@ -11,6 +11,8 @@ class SearchViewController: UIViewController {
 
     private let viewModel: SearchViewModel = SearchViewModel()
 
+    var tableView: SearchTableView = SearchTableView(frame: .zero, style: .insetGrouped)
+
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = UIImage(systemName: "magnifyingglass")
@@ -28,17 +30,43 @@ class SearchViewController: UIViewController {
         title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+
         viewModel.request()
+        setUpBinders()
+
+        setupViews()
+        setupConstraints()
     }
 
     private func setUpBinders() {
         viewModel.error.bind { [ weak self ] error in
             if let error = error {
                 print(error)
-            } else {
-                
             }
         }
+        viewModel.recipes.bind { [ weak self ] recipes in
+            print(recipes)
+            self?.goToRecipePage(recipes)
+        }
+    }
+
+    private func goToRecipePage(_ recipeList: [RecipeModel] ) {
+        let controller = RecipeListViewController()
+        self.navigationController?.present(controller, animated: true)
+    }
+
+    private func setupViews() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
 

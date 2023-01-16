@@ -10,6 +10,8 @@ import UIKit
 class SearchBarTableViewCell: UITableViewCell {
     static let reuseIdentifier = "SearchBarTableViewCell"
 
+    let text: UITextField = UITextField()
+
     let searchBarTextField: UITextField = {
         let searchBarTextField = UITextField()
         searchBarTextField.placeholder = "Enter an ingredient's name here ..."
@@ -18,6 +20,7 @@ class SearchBarTableViewCell: UITableViewCell {
         searchBarTextField.textAlignment = .left
         searchBarTextField.clearsOnInsertion = true
         searchBarTextField.clearButtonMode = .whileEditing
+        searchBarTextField.becomeFirstResponder()
         return searchBarTextField
     }()
 
@@ -46,11 +49,10 @@ class SearchBarTableViewCell: UITableViewCell {
     }
 
     private func addViews() {
-        contentView.addSubview(mainStackView)
-
         mainStackView.addSubview(searchBarTextField)
         mainStackView.addSubview(addButton)
-
+        contentView.addSubview(mainStackView)
+        
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainStackView.topAnchor.constraint(equalTo: topAnchor),
