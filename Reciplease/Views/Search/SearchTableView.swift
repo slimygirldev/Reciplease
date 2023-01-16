@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol SearchTableViewDelegate: AnyObject {
-    func searchTableViewDelegateTappedAddButton(item: String)
-
-    func searchTableViewDelegateTappedSearchButton(itemsList: [String])
-}
-
 class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
     override init(frame: CGRect, style: UITableView.Style) {

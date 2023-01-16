@@ -17,9 +17,6 @@ class NetworkService: NetworkProtocol {
 
     static let shared = NetworkService(networkClient: .shared)
 
-    private let apiKey: String = ""
-    private let recipeUrl: String = "https://api.edamam.com/api/recipes/v2?"
-    private let id: String = ""
     private let type: String = "public"
 
     var networkClient: URLSession
@@ -35,11 +32,11 @@ class NetworkService: NetworkProtocol {
         let validEntries = entries.filter({ !$0.isEmpty })
 
         //Check for problematic characters like spaces or special characters
-        var urlComponents = URLComponents(string: recipeUrl)
+        var urlComponents = URLComponents(string: Config.recipeUrl)
         urlComponents?.queryItems = [
             URLQueryItem(name: "q", value: validEntries.joined(separator: ",")),
-            URLQueryItem(name: "app_id", value: id),
-            URLQueryItem(name: "app_key", value: apiKey),
+            URLQueryItem(name: "app_id", value: Config.id),
+            URLQueryItem(name: "app_key", value: Config.apiKey),
             URLQueryItem(name: "type", value: type)
         ]
 
