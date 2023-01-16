@@ -15,18 +15,21 @@ class SearchBarTableViewCell: UITableViewCell {
     let searchBarTextField: UITextField = {
         let searchBarTextField = UITextField()
         searchBarTextField.placeholder = "Enter an ingredient's name here ..."
-        searchBarTextField.font = .systemFont(ofSize: 30)
+        searchBarTextField.font = .systemFont(ofSize: 14)
         searchBarTextField.keyboardType = .default
         searchBarTextField.textAlignment = .left
         searchBarTextField.clearsOnInsertion = true
         searchBarTextField.clearButtonMode = .whileEditing
         searchBarTextField.becomeFirstResponder()
+        searchBarTextField.translatesAutoresizingMaskIntoConstraints = false
         return searchBarTextField
     }()
 
     let addButton: UIButton = {
-        let addButton = UIButton()
-        addButton.titleLabel?.text = "Add"
+        let addButton = UIButton(type: .custom)
+        addButton.setTitle("Add", for: .normal)
+        addButton.backgroundColor = UIColor(red: 0.161, green: 0.8, blue: 0.373, alpha: 1)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
 
@@ -36,6 +39,8 @@ class SearchBarTableViewCell: UITableViewCell {
         mainStackView.distribution = .fill
         mainStackView.spacing = 5
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.isLayoutMarginsRelativeArrangement = true
+        mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return mainStackView
     }()
 
@@ -49,11 +54,12 @@ class SearchBarTableViewCell: UITableViewCell {
     }
 
     private func addViews() {
-        mainStackView.addSubview(searchBarTextField)
-        mainStackView.addSubview(addButton)
+        mainStackView.addArrangedSubview(searchBarTextField)
+        mainStackView.addArrangedSubview(addButton)
         contentView.addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
+            addButton.widthAnchor.constraint(equalToConstant: 70),
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainStackView.topAnchor.constraint(equalTo: topAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
