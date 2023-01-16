@@ -19,8 +19,6 @@ class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
                       forCellReuseIdentifier: SearchBarTableViewCell.reuseIdentifier)
         self.register(ItemListTableViewCell.self,
                       forCellReuseIdentifier: ItemListTableViewCell.reuseIdentifier)
-        self.register(SearchButtonTableViewCell.self,
-                      forCellReuseIdentifier: SearchButtonTableViewCell.reuseIdentifier)
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -36,7 +34,7 @@ class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,14 +45,13 @@ class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 && indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchBarTableViewCell.reuseIdentifier,
                                                            for: indexPath) as? SearchBarTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             return cell
         } else if indexPath.section == 1 && indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemListTableViewCell.reuseIdentifier,
                                                            for: indexPath) as? ItemListTableViewCell else { return UITableViewCell() }
-            return cell
-        } else if indexPath.section == 2 && indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchButtonTableViewCell.reuseIdentifier,
-                                                           for: indexPath) as? SearchButtonTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            cell.isUserInteractionEnabled = false
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemListTableViewCell.reuseIdentifier,

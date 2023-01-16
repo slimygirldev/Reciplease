@@ -13,6 +13,16 @@ class SearchViewController: UIViewController {
 
     var tableView: SearchTableView = SearchTableView(frame: .zero, style: .insetGrouped)
 
+    var searchButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Search recipes", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 24)
+        button.backgroundColor = .systemMint
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = UIImage(systemName: "magnifyingglass")
@@ -26,12 +36,13 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        edgesForExtendedLayout = []
         view.backgroundColor = .systemBackground
         title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
-        viewModel.request()
+//        viewModel.request()
         setUpBinders()
 
         setupViews()
@@ -52,12 +63,13 @@ class SearchViewController: UIViewController {
 
     private func goToRecipePage(_ recipeList: [RecipeModel] ) {
         let controller = RecipeListViewController()
-        self.navigationController?.present(controller, animated: true)
+//        self.navigationController?.present(controller, animated: true)
     }
 
     private func setupViews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
+        view.addSubview(searchButton)
     }
 
     private func setupConstraints() {
@@ -65,7 +77,12 @@ class SearchViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+
+            searchButton.heightAnchor.constraint(equalToConstant: 44),
+            searchButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
+            searchButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            searchButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            searchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
     }
 }
