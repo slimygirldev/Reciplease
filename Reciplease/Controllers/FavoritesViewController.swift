@@ -8,6 +8,7 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
+    weak var coordinator: FavoritesCoordinator?
 
     init() {
         super.init(nibName: nil, bundle: nil)

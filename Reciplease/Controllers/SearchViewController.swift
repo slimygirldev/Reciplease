@@ -9,9 +9,11 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    weak var coordinator: MainCoordinator?
+
     private let viewModel: SearchViewModel = SearchViewModel()
 
-    var tableView: SearchTableView = SearchTableView(frame: .zero, style: .insetGrouped)
+    lazy var tableView: SearchTableView = SearchTableView(viewModel: viewModel)
 
     var searchButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -19,6 +21,7 @@ class SearchViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 24)
         button.backgroundColor = .systemMint
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(searchRecipesButtonDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -42,28 +45,29 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
-//        viewModel.request()
-        setUpBinders()
-
         setupViews()
         setupConstraints()
+        setUpBinders()
+    }
+
+    @objc func searchRecipesButtonDidTapped() {
+        viewModel.request()
     }
 
     private func setUpBinders() {
         viewModel.error.bind { [ weak self ] error in
             if let error = error {
+                // present alert pop up
                 print(error)
             }
         }
         viewModel.recipes.bind { [ weak self ] recipes in
             print(recipes)
-            self?.goToRecipePage(recipes)
+            guard recipes.isEmpty else {
+                return
+            }
+            self?.coordinator?.goToRecipePage(recipes)
         }
-    }
-
-    private func goToRecipePage(_ recipeList: [RecipeModel] ) {
-        let controller = RecipeListViewController()
-//        self.navigationController?.present(controller, animated: true)
     }
 
     private func setupViews() {

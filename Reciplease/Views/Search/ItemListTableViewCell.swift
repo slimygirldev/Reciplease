@@ -10,9 +10,9 @@ import UIKit
 class ItemListTableViewCell: UITableViewCell {
     static let reuseIdentifier = "ItemListTableViewCell"
 
-    let itemList: UILabel = {
+    let itemSlot: UILabel = {
         let itemList = UILabel()
-        itemList.font = .systemFont(ofSize: 20)
+        itemList.font = .systemFont(ofSize: 18)
         itemList.translatesAutoresizingMaskIntoConstraints = false
         return itemList
     }()
@@ -36,18 +36,19 @@ class ItemListTableViewCell: UITableViewCell {
     }
 
     func configure(item: String) {
-
+        itemSlot.text = item
     }
 
     private func addViews() {
         addSubview(mainStackView)
-        mainStackView.addSubview(itemList)
+        mainStackView.addArrangedSubview(itemSlot)
 
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             mainStackView.topAnchor.constraint(equalTo: topAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
         ])
     }
 }

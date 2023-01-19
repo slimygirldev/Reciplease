@@ -8,12 +8,10 @@
 import UIKit
 
 class SearchViewModel {
-
+    // Should be private and they should be accessed through methods.
     var error: Observable<String?> = Observable(nil)
 
-    var tableView = SearchTableView(frame: .zero, style: .insetGrouped)
-
-    var ingredientsList: Observable<[String]> = Observable(["tomato"])
+    var ingredientsList: Observable<[String]> = Observable([])
 
     var recipes: Observable<[RecipeModel]> = Observable([])
 
@@ -24,6 +22,13 @@ class SearchViewModel {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func addIngredient(_ ingredient: String) {
+        ingredientsList.value.append(ingredient)
+    }
+
+    func clearItemList() {
+        ingredientsList.value = []
+    }
 
     func request() {
         if ingredientsList.value.isEmpty == false {

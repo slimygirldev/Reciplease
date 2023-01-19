@@ -8,5 +8,8 @@
 import UIKit
 
 class RecipeListViewController: UIViewController {
+    weak var coordinator: MainCoordinator?
+
     var recipeList: [RecipeModel] = []
+
 }
