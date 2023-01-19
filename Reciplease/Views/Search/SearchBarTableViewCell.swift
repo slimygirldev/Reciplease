@@ -10,7 +10,7 @@ import UIKit
 class SearchBarTableViewCell: UITableViewCell {
     static let reuseIdentifier = "SearchBarTableViewCell"
 
-    let text: UITextField = UITextField()
+    var addIngredient: ((String) -> Void)?
 
     let searchBarTextField: UITextField = {
         let searchBarTextField = UITextField()
@@ -29,6 +29,8 @@ class SearchBarTableViewCell: UITableViewCell {
         let addButton = UIButton(type: .custom)
         addButton.setTitle("Add", for: .normal)
         addButton.backgroundColor = UIColor(red: 0.161, green: 0.8, blue: 0.373, alpha: 1)
+        addButton.addTarget(self, action: #selector(addButtonTapped),
+                            for: .touchUpInside)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
@@ -51,6 +53,16 @@ class SearchBarTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func addButtonTapped() {
+        guard let ingredient = searchBarTextField.text else { return }
+
+        guard ingredient.isEmpty == false else {
+            return
+        }
+
+        addIngredient?(ingredient)
     }
 
     private func addViews() {

@@ -11,6 +11,7 @@ final class Observable<T> {
     var value: T {
         didSet {
             // whenever the value changes it's going to use listener
+            print("new value in observed element !")
             self.listener?(value)
         }
     }
