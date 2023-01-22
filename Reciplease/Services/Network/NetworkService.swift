@@ -68,9 +68,9 @@ class NetworkService: NetworkProtocol {
                     let recipe = hit.recipe
                     return RecipeModel(title: recipe.label,
                                        duration: 30,
-                                       ingredients: recipe.ingredients,
+                                       ingredients: recipe.ingredients.map{ $0.food },
                                        note: 4.5,
-                                       images: recipe.images)
+                                       image: recipe.images.large.url)
                 }
 //                let recipes = searchResponse.hits.map { $0.recipe }
                 completion(.success(recipeModel))
