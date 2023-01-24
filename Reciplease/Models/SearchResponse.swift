@@ -35,11 +35,9 @@ struct Hit: Codable {
 
 // MARK: - Links
 struct Links: Codable {
-//    let linksSelf: Next
-    let next: Next
+    let next: Next?
 
     enum CodingKeys: String, CodingKey {
-//        case linksSelf = "self"
         case next
     }
 }

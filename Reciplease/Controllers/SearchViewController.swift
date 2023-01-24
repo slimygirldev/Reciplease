@@ -8,8 +8,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
-    weak var coordinator: MainCoordinator?
+    var coordinator: MainCoordinator?
 
     private let viewModel: SearchViewModel = SearchViewModel()
 
@@ -30,7 +29,7 @@ class SearchViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = UIImage(systemName: "magnifyingglass")
         tabBarItem.title = "Search"
-
+    
     }
 
     required init?(coder: NSCoder) {
@@ -55,15 +54,15 @@ class SearchViewController: UIViewController {
     }
 
     private func setUpBinders() {
-        viewModel.error.bind { [ weak self ] error in
+        viewModel.error.bind { [weak self] error in
             if let error = error {
                 // present alert pop up
                 print(error)
             }
         }
-        viewModel.recipes.bind { [ weak self ] recipes in
-            print(recipes)
-            guard recipes.isEmpty else {
+        viewModel.recipes.bind { [weak self] recipes in
+            guard !recipes.isEmpty else {
+                // Recipe is empty show error
                 return
             }
             self?.coordinator?.goToRecipePage(recipes)

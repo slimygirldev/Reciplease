@@ -27,11 +27,13 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         fatalError("init(coder:) has not been implemented")
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return models.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeMiniatureCollectionViewCell.reuseIdentifier,
                                                             for: indexPath) as? RecipeMiniatureCollectionViewCell else {
             return UICollectionViewCell()
@@ -41,5 +43,13 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
             cell.configure(model: model)
         }
         return cell
+    }
+}
+
+extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width - CGFloat(horizontalPadding * 2), height: frame.height / 2.2)
     }
 }

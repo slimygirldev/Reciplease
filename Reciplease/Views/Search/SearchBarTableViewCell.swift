@@ -15,7 +15,7 @@ class SearchBarTableViewCell: UITableViewCell {
     let searchBarTextField: UITextField = {
         let searchBarTextField = UITextField()
         searchBarTextField.placeholder = "Enter an ingredient's name here ..."
-        searchBarTextField.font = .systemFont(ofSize: 14)
+        searchBarTextField.font = .systemFont(ofSize: 16)
         searchBarTextField.keyboardType = .default
         searchBarTextField.textAlignment = .left
         searchBarTextField.clearsOnInsertion = true

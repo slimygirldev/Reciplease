@@ -8,7 +8,10 @@
 import Foundation
 
 struct Images: Codable {
-    let thumbnail, small, regular, large: Large
+    let thumbnail: Large
+    let small: Large
+    let regular: Large
+    let large: Large?
 
     enum CodingKeys: String, CodingKey {
         case thumbnail = "THUMBNAIL"

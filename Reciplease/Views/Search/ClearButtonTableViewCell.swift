@@ -49,7 +49,7 @@ class ClearButtonTableViewCell: UITableViewCell {
     }
 
     @objc func clearItems() {
-        print("clearbtntapped")
+//        print("clearbtntapped")
         clearIngredientsList?()
     }
 

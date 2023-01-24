@@ -10,4 +10,3 @@ struct Config {
     static let id: String = ""
 }
 
-  

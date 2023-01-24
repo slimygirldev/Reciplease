@@ -20,7 +20,6 @@
 		988C5263296C423900CDFD64 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5262296C423900CDFD64 /* SearchResponse.swift */; };
 		988C5265296C431600CDFD64 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5264296C431600CDFD64 /* Ingredient.swift */; };
 		988C5267296C438B00CDFD64 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5266296C438B00CDFD64 /* Images.swift */; };
-		988C5269296C576A00CDFD64 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5268296C576A00CDFD64 /* NetworkProtocol.swift */; };
 		988C526B296C5CFE00CDFD64 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526A296C5CFE00CDFD64 /* NetworkService.swift */; };
 		988C526D296DB26900CDFD64 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526C296DB26900CDFD64 /* RecipeModel.swift */; };
 		988C526F296DD14200CDFD64 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526E296DD14200CDFD64 /* SearchTableView.swift */; };
@@ -64,7 +63,6 @@
 		988C5262296C423900CDFD64 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		988C5264296C431600CDFD64 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		988C5266296C438B00CDFD64 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		988C5268296C576A00CDFD64 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		988C526A296C5CFE00CDFD64 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		988C526C296DB26900CDFD64 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		988C526E296DD14200CDFD64 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				102424357B54476CFBB14D90 /* Pods-Reciplease.debug.xcconfig */,
 				32B81B1A9EF1B4A604AD68B8 /* Pods-Reciplease.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -250,7 +247,6 @@
 		9894CABE29706E58007B7995 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				988C5268296C576A00CDFD64 /* NetworkProtocol.swift */,
 				988C526A296C5CFE00CDFD64 /* NetworkService.swift */,
 			);
 			path = Network;
@@ -454,7 +450,6 @@
 				9894CAC52971B58F007B7995 /* RecipeDetailViewModel.swift in Sources */,
 				988C5277296F1F6600CDFD64 /* SearchBarTableViewCell.swift in Sources */,
 				988C52582968BFB700CDFD64 /* FavoritesViewController.swift in Sources */,
-				988C5269296C576A00CDFD64 /* NetworkProtocol.swift in Sources */,
 				9894CADF29781E17007B7995 /* Coordinator.swift in Sources */,
 				988C52402968BDBE00CDFD64 /* SceneDelegate.swift in Sources */,
 				988C527C296F25FE00CDFD64 /* ItemListTableViewCell.swift in Sources */,

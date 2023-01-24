@@ -100,7 +100,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         mainStackView.accessibilityLabel = "Recipe"
         mainStackView.accessibilityHint = "Contains the recipe, click here to go the recipe detail"
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.backgroundColor = .red
+        mainStackView.backgroundColor = .white
         return mainStackView
     }()
 
@@ -160,7 +160,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
     func configure(model: RecipeModel) {
         ingredientsListLabel.text = model.ingredients.joined(separator: ", ")
         recipeNameLabel.text = model.title
-
+        self.recipeImage.image = model.image ?? UIImage(named: "pizza")
     }
 
     private func addViews() {
