@@ -33,7 +33,7 @@ class SearchViewModel {
     func request() {
         if ingredientsList.value.isEmpty == false {
             NetworkService.shared.fetchData(entries: ingredientsList.value) { [weak self] result in
-                switch result {
+                switch result { 
                 case .failure(let error):
                     self?.error.value = error.localizedDescription
                     print(error)

@@ -14,5 +14,4 @@ class SearchCoordinator: MainCoordinator {
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
-
 }

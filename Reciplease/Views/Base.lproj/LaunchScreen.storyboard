@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,32 +13,38 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cookBookIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tIF-3o-AEd">
-                                <rect key="frame" x="121.66666666666669" y="351" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Tmf-1X-dND"/>
-                                    <constraint firstAttribute="height" constant="150" id="XDa-KL-AGb"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashScreenBg" translatesAutoresizingMaskIntoConstraints="NO" id="6ai-bV-e7X">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rzi-IJ-G1C">
+                                <rect key="frame" x="0.0" y="256" width="430" height="420"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tIF-3o-AEd" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3DS-lU-Snt"/>
-                            <constraint firstItem="tIF-3o-AEd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aqb-ls-Weq"/>
+                            <constraint firstItem="Rzi-IJ-G1C" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="BHi-YK-VSW"/>
+                            <constraint firstItem="Rzi-IJ-G1C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J0W-uY-Lbh"/>
+                            <constraint firstItem="6ai-bV-e7X" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Nb0-Jf-N5i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rzi-IJ-G1C" secondAttribute="trailing" id="boo-8j-DhX"/>
+                            <constraint firstItem="6ai-bV-e7X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="naA-Fu-97S"/>
+                            <constraint firstAttribute="bottom" secondItem="6ai-bV-e7X" secondAttribute="bottom" id="ogk-ZF-n35"/>
+                            <constraint firstItem="6ai-bV-e7X" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xJ7-VW-nNv"/>
+                            <constraint firstItem="Rzi-IJ-G1C" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yNV-R0-Pot"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>
-        <image name="cookBookIcon" width="512" height="512"/>
+        <image name="logo" width="739" height="420"/>
+        <image name="splashScreenBg" width="788" height="1399"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

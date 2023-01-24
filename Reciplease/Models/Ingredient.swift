@@ -9,9 +9,10 @@ import Foundation
 
 struct Ingredient: Codable {
     let text: String
-    let quantity: Int
-    let measure, food: String
-    let weight: Int
+    let quantity: Float
+    let measure: String?
+    let food: String
+    let weight: Float
     let foodID: String
 
     enum CodingKeys: String, CodingKey {
