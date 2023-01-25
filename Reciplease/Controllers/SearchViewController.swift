@@ -49,8 +49,10 @@ class SearchViewController: UIViewController {
         setUpBinders()
     }
 
-    @objc func searchRecipesButtonDidTapped() {
+    @objc func searchRecipesButtonDidTapped(sender: UIButton) {
         viewModel.request()
+        print("button pressed")
+        sender.isEnabled = false
     }
 
     private func setUpBinders() {
