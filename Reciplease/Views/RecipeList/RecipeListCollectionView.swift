@@ -31,6 +31,7 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
                         numberOfItemsInSection section: Int) -> Int {
         return models.count
     }
+    
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
