@@ -15,14 +15,14 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
     let recipeNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 28)
+        label.font = .systemFont(ofSize: 25)
         label.textColor = .black
+        label.adjustsFontSizeToFitWidth = true
         label.text = "Japanese Curry"
         label.lineBreakMode = .byTruncatingTail
         label.accessibilityLabel = "Recipe name \((label.text) ?? "Recipe name")"
         label.accessibilityHint = "This is the name of the recipe"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .white
         return label
     }()
 
@@ -109,7 +109,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         stack.axis = .vertical
         stack.spacing = 10
         stack.backgroundColor = .white
-        stack.accessibilityHint = "Contains recipe nam, ingredient list preview, cooking time and cooking time incon"
+        stack.accessibilityHint = "Contains recipe name, ingredient list preview, cooking time and cooking time incon"
         stack.accessibilityLabel = "Description container"
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -123,7 +123,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         stack.accessibilityLabel = "Information container"
         stack.accessibilityHint = "Contains The informations relatives to Recipe like ngredients and cooking time"
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = .white
+        stack.backgroundColor = .clear
         return stack
     }()
 
@@ -136,7 +136,6 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         stack.accessibilityLabel = "Note labe and icon"
         stack.accessibilityHint = "Containss recipe's note and icon"
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = .magenta
         return stack
     }()
 
@@ -149,7 +148,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         layer.borderWidth = 1
-        layer.borderColor = UIColor.gray.cgColor
+        layer.borderColor = UIColor(red: 0.825, green: 0.904, blue: 0.885, alpha: 1).cgColor
         addViews()
     }
 
@@ -160,8 +159,9 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
     func configure(model: RecipeModel) {
         ingredientsListLabel.text = model.ingredients.joined(separator: ", ")
         recipeNameLabel.text = model.title
-        self.recipeImage.image = model.image ?? UIImage(named: "pizza")
+        self.recipeImage.image = model.image ?? UIImage(named: "noImage")
     }
+
 
     private func addViews() {
         addSubview(mainStackView)
@@ -190,14 +190,12 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            timerIcon.widthAnchor.constraint(equalToConstant: 30),
+            recipeImage.heightAnchor.constraint(equalToConstant: 200),
 
+            timerIcon.widthAnchor.constraint(equalToConstant: 30),
+            ingredientsListLabel.widthAnchor.constraint(equalToConstant: 280),
         ])
     }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//           return UIEdgeInsets(top: 25, left: 15, bottom: 0, right: 5)
-//        }
 }
 
 // MARK: - UI Preview (swiftUI)
@@ -216,6 +214,7 @@ struct RecipeMiniatureCollectionViewCell_Representable: UIViewRepresentable {
         uiView.configure(model: model)
     }
 }
+
 struct RecipeMiniatureCollectionViewCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {

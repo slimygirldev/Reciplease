@@ -48,7 +48,7 @@ class NetworkService {
                 for hit in searchResponse.hits {
                     let recipe: Recipe = hit.recipe
                     let imageUrl: String = recipe.images.large?.url ?? ""
-                    self?.downloadImage(from: imageUrl) { (image) in
+                    self?.downloadImage(from: imageUrl) { image in
                         let recipe: RecipeModel = RecipeModel(title: recipe.label,
                                                               duration: 30,
                                                               ingredients: recipe.ingredients.map{ $0.food },
