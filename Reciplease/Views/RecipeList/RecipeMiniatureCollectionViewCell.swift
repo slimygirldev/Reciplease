@@ -51,7 +51,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
     let cookingTimeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 18)
         label.textColor = .systemGray2
         label.textAlignment = .right
         label.text = String(30)
@@ -149,7 +149,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor.gray.cgColor
         addViews()
     }
 
@@ -195,9 +195,9 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-           return UIEdgeInsets(top: 25, left: 15, bottom: 0, right: 5)
-        }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//           return UIEdgeInsets(top: 25, left: 15, bottom: 0, right: 5)
+//        }
 }
 
 // MARK: - UI Preview (swiftUI)
@@ -220,7 +220,7 @@ struct RecipeMiniatureCollectionViewCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(title: "Pizza Margarita",
-                                                                               ingredients: ["Tomato","Mozzarella","Basilic"],
+                                                                               ingredients: ["Tomato","Mozzarella","Basilic", "Tomato","Mozzarella","Basilic"],
                                                                                image: nil))
 
 
