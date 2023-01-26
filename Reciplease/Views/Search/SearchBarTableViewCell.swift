@@ -21,6 +21,8 @@ class SearchBarTableViewCell: UITableViewCell {
         searchBarTextField.clearsOnInsertion = true
         searchBarTextField.clearButtonMode = .whileEditing
         searchBarTextField.becomeFirstResponder()
+        searchBarTextField.accessibilityLabel = "Text field add ingredient"
+        searchBarTextField.accessibilityHint = "Here you can enter an ingredient presents in your fridge"
         searchBarTextField.translatesAutoresizingMaskIntoConstraints = false
         return searchBarTextField
     }()
@@ -31,6 +33,8 @@ class SearchBarTableViewCell: UITableViewCell {
         addButton.backgroundColor = UIColor(red: 0.161, green: 0.8, blue: 0.373, alpha: 1)
         addButton.addTarget(self, action: #selector(addButtonTapped),
                             for: .touchUpInside)
+        addButton.accessibilityLabel = "Add Button"
+        addButton.accessibilityHint = "This button add the ingredient entered in the text field in the list of ingredients in your fridge"
         addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
@@ -40,6 +44,8 @@ class SearchBarTableViewCell: UITableViewCell {
         mainStackView.axis = .horizontal
         mainStackView.distribution = .fill
         mainStackView.spacing = 5
+        mainStackView.accessibilityLabel = "Container Add text field and button"
+        mainStackView.accessibilityHint = "This element contains the add ingredent text field and the add button"
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.isLayoutMarginsRelativeArrangement = true
         mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
@@ -49,6 +55,7 @@ class SearchBarTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -69,7 +76,9 @@ class SearchBarTableViewCell: UITableViewCell {
         mainStackView.addArrangedSubview(searchBarTextField)
         mainStackView.addArrangedSubview(addButton)
         contentView.addSubview(mainStackView)
-        
+    }
+
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             addButton.widthAnchor.constraint(equalToConstant: 70),
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),

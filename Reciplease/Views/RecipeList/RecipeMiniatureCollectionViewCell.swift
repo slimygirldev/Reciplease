@@ -15,9 +15,8 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
     let recipeNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 25)
+        label.font = .systemFont(ofSize: 20)
         label.textColor = .black
-        label.adjustsFontSizeToFitWidth = true
         label.text = "Japanese Curry"
         label.lineBreakMode = .byTruncatingTail
         label.accessibilityLabel = "Recipe name \((label.text) ?? "Recipe name")"
@@ -30,6 +29,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = .systemGray
+        label.lineBreakMode = .byTruncatingTail
         label.accessibilityLabel = "Ingredients names"
         label.accessibilityHint = "This is the ingredient name"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,55 +37,12 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    let noteLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 8)
-        label.textColor = .systemBlue
-        label.text = "3.5"
-        label.accessibilityHint = "Contains the Recipe note of \((label.text) ?? "3.5")"
-        label.accessibilityLabel = "Note"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .cyan
-        return label
-    }()
-
-    let cookingTimeLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
-        label.textColor = .systemGray2
-        label.textAlignment = .right
-        label.text = String(30)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .white
-        return label
-    }()
-
-// MARK: - Images
-
-    let noteIcon: UIImageView = {
-        let icon = UIImageView()
-        icon.image = UIImage(systemName: "star.fill")
-        icon.tintColor = UIColor(red: 1, green: 0.733, blue: 0.2, alpha: 1)
-        icon.accessibilityHint = "This is a star icon for illustrates note value"
-        icon.accessibilityLabel = "Note icon"
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        return icon
-    }()
-
-    let timerIcon: UIImageView = {
-        let icon = UIImageView()
-        icon.image = UIImage(systemName: "timer")
-        icon.tintColor = .systemGray
-        icon.contentMode = .center
-        icon.accessibilityHint = "This is a timer icon for illustrates cooking time value"
-        icon.accessibilityLabel = "Timer icon"
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        return icon
-    }()
+// MARK: - Image
 
     let recipeImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -96,7 +53,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fill
-        mainStackView.spacing = 10
+        mainStackView.spacing = 0
         mainStackView.accessibilityLabel = "Recipe"
         mainStackView.accessibilityHint = "Contains the recipe, click here to go the recipe detail"
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -104,52 +61,36 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return mainStackView
     }()
 
-    let descriptionStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 10
-        stack.backgroundColor = .white
-        stack.accessibilityHint = "Contains recipe name, ingredient list preview, cooking time and cooking time incon"
-        stack.accessibilityLabel = "Description container"
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-
     let secondaryStackView: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .horizontal
+        stack.axis = .vertical
         stack.distribution = .fill
-        stack.spacing = 0
-        stack.accessibilityLabel = "Information container"
-        stack.accessibilityHint = "Contains The informations relatives to Recipe like ngredients and cooking time"
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = .clear
-        return stack
-    }()
-
-    let noteHorizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
         stack.spacing = 5
-        stack.alignment = .center
-        stack.accessibilityLabel = "Note labe and icon"
-        stack.accessibilityHint = "Containss recipe's note and icon"
+        stack.accessibilityLabel = "Information container"
+        stack.accessibilityHint = "Contains The informations relatives to Recipe like ingredients and cooking time"
         stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 10,
+                                           left: 10,
+                                           bottom: 10,
+                                           right: 10)
         return stack
     }()
 
-// MARK: - Methods
+    // MARK: - Methods
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
-        layer.cornerRadius = 10
+
+        layer.cornerRadius = 15
         layer.masksToBounds = true
         layer.borderWidth = 1
         layer.borderColor = UIColor(red: 0.825, green: 0.904, blue: 0.885, alpha: 1).cgColor
+
         addViews()
+        setupConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -165,35 +106,19 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
     private func addViews() {
         addSubview(mainStackView)
-
         mainStackView.addArrangedSubview(recipeImage)
-
-        mainStackView.addArrangedSubview(descriptionStackView)
-
-        descriptionStackView.isLayoutMarginsRelativeArrangement = true
-        descriptionStackView.layoutMargins = UIEdgeInsets(top: 10,
-                                                          left: 10,
-                                                          bottom: 10,
-                                                          right: 10)
-
-        descriptionStackView.addArrangedSubview(recipeNameLabel)
-        descriptionStackView.addArrangedSubview(secondaryStackView)
-
+        mainStackView.addArrangedSubview(secondaryStackView)
+        secondaryStackView.addArrangedSubview(recipeNameLabel)
         secondaryStackView.addArrangedSubview(ingredientsListLabel)
-        secondaryStackView.addArrangedSubview(cookingTimeLabel)
-        secondaryStackView.addArrangedSubview(timerIcon)
+    }
 
-
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: topAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            recipeImage.heightAnchor.constraint(equalToConstant: 200),
-
-            timerIcon.widthAnchor.constraint(equalToConstant: 30),
-            ingredientsListLabel.widthAnchor.constraint(equalToConstant: 280),
+            recipeImage.heightAnchor.constraint(equalToConstant: 120),
         ])
     }
 }
@@ -229,7 +154,7 @@ struct RecipeMiniatureCollectionViewCell_Previews: PreviewProvider {
             .previewDisplayName("Long name & ingredients list preview")
         }
         .frame(width: UIScreen.main.bounds.width,
-               height: 250)
+               height: 200)
         .padding()
         .previewLayout(.sizeThatFits)
     }

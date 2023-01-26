@@ -10,11 +10,13 @@ import UIKit
 class ItemListTableViewCell: UITableViewCell {
     static let reuseIdentifier = "ItemListTableViewCell"
 
-    let itemSlot: UILabel = {
-        let itemList = UILabel()
-        itemList.font = .systemFont(ofSize: 18)
-        itemList.translatesAutoresizingMaskIntoConstraints = false
-        return itemList
+    let itemLabel: UILabel = {
+        let itemLabel = UILabel()
+        itemLabel.font = .systemFont(ofSize: 18)
+        itemLabel.accessibilityLabel = "Name of the ingredient"
+        itemLabel.accessibilityHint = "This is an ingredient name, added with add button"
+        itemLabel.translatesAutoresizingMaskIntoConstraints = false
+        return itemLabel
     }()
 
     let mainStackView: UIStackView = {
@@ -36,12 +38,12 @@ class ItemListTableViewCell: UITableViewCell {
     }
 
     func configure(item: String) {
-        itemSlot.text = item
+        itemLabel.text = item
     }
 
     private func addViews() {
         addSubview(mainStackView)
-        mainStackView.addArrangedSubview(itemSlot)
+        mainStackView.addArrangedSubview(itemLabel)
 
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

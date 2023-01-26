@@ -6,3 +6,43 @@
 //
 
 import Foundation
+import UIKit
+
+enum AlertMessages: String {
+    case noIngredient = "Please enter an ingredient."
+    case noData = "No data received from API endpoint. Please check your request and ensure that the correct parameters are being passed and that the API endpoint is returning data."
+    case invalidURL = "Invalid URL. Please check the URL and ensure that it is formatted correctly and leads to a valid endpoint."
+    case unexpectedStatusCode = "Unexpected status code received from API endpoint. Please check your request and ensure that the API endpoint is functioning properly."
+}
+
+class AlertProvider: Error {
+
+    func alertError(alertType: APIError) -> UIAlertController {
+        switch alertType {
+        case .noData:
+            let alertVC = UIAlertController(title: "Error",
+                                            message: AlertMessages.noData.rawValue,
+                                            preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            return alertVC
+        case .unexpectedStatusCode:
+            let alertVC = UIAlertController(title: "Error",
+                                            message: AlertMessages.unexpectedStatusCode.rawValue,
+                                            preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            return alertVC
+        case .invalidURL:
+            let alertVC = UIAlertController(title: "Error",
+                                            message: AlertMessages.invalidURL.rawValue,
+                                            preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            return alertVC
+        case .noIngredients:
+            let alertVC = UIAlertController(title: "Error",
+                                            message: AlertMessages.noIngredient.rawValue,
+                                            preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            return alertVC
+        }
+    }
+}

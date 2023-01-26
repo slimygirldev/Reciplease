@@ -36,15 +36,14 @@ class SearchViewModel {
                 switch result { 
                 case .failure(let error):
                     self?.error.value = error.localizedDescription
-                    print(error)
+                    // handle error
                 case .success(let receivedRecipes):
                     self?.recipes.value = receivedRecipes
                 }
             }
         } else {
-            
+            print("ingredients list is empty")
             // here vm must notify that something went wrong
-        
         }
     }
 }

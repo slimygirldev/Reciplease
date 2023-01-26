@@ -51,6 +51,6 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width - CGFloat(horizontalPadding * 2), height: frame.height / 2.2)
+        return CGSize(width: frame.width - CGFloat(horizontalPadding * 2), height: 190)
     }
 }

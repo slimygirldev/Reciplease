@@ -13,6 +13,7 @@ enum APIError: Error {
     case invalidURL
     case unexpectedStatusCode
     case noData
+    case noIngredients
 }
 
 class NetworkService {
@@ -25,7 +26,7 @@ class NetworkService {
     }
 
     func fetchData(entries: [String],
-                   completion: @escaping (Result<[RecipeModel], Error>) -> Void) {
+                   completion: @escaping (Result<[RecipeModel], APIError>) -> Void) {
         //Check for empty
         //check if entries has values
         let validEntries = entries.filter({ !$0.isEmpty })
@@ -45,14 +46,16 @@ class NetworkService {
             switch response.result {
             case .success(let searchResponse):
                 var recipeModel = [RecipeModel]()
+                guard searchResponse.hits.count > 0 else {
+                    completion(.failure(.noData))
+                    return
+                }
                 for hit in searchResponse.hits {
                     let recipe: Recipe = hit.recipe
-                    let imageUrl: String = recipe.images.large?.url ?? ""
+                    let imageUrl: String = recipe.images.regular.url
                     self?.downloadImage(from: imageUrl) { image in
                         let recipe: RecipeModel = RecipeModel(title: recipe.label,
-                                                              duration: 30,
                                                               ingredients: recipe.ingredients.map{ $0.food },
-                                                              note: 4.5,
                                                               image: image)
                         recipeModel.append(recipe)
                         if recipeModel.count == searchResponse.hits.count {
@@ -61,7 +64,9 @@ class NetworkService {
                     }
                 }
             case .failure(let error):
-                completion(.failure(error))
+                // handle error ?
+
+                completion(.failure(.unexpectedStatusCode))
             }
         }
     }
