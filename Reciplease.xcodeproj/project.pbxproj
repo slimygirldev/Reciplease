@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B7AC1404FD005C02091A00F /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5047D8378FD9761FB3332E46 /* Pods_Reciplease.framework */; };
+		982E22DC2982A472003C74DC /* RecipeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E22DB2982A472003C74DC /* RecipeDetailTableViewController.swift */; };
 		988C523E2968BDBE00CDFD64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C523D2968BDBE00CDFD64 /* AppDelegate.swift */; };
 		988C52402968BDBE00CDFD64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C523F2968BDBE00CDFD64 /* SceneDelegate.swift */; };
 		988C52422968BDBE00CDFD64 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C52412968BDBE00CDFD64 /* TabBarViewController.swift */; };
@@ -25,7 +26,7 @@
 		988C526F296DD14200CDFD64 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526E296DD14200CDFD64 /* SearchTableView.swift */; };
 		988C5274296EE3E600CDFD64 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 988C5273296EE3E600CDFD64 /* response.json */; };
 		988C5277296F1F6600CDFD64 /* SearchBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5276296F1F6600CDFD64 /* SearchBarTableViewCell.swift */; };
-		988C5279296F1F8000CDFD64 /* RecipeDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5278296F1F8000CDFD64 /* RecipeDetailCollectionViewCell.swift */; };
+		988C5279296F1F8000CDFD64 /* RecipeDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5278296F1F8000CDFD64 /* RecipeDetailTableView.swift */; };
 		988C527C296F25FE00CDFD64 /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C527B296F25FE00CDFD64 /* ItemListTableViewCell.swift */; };
 		9894CAC029706E69007B7995 /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CABF29706E69007B7995 /* AlertProvider.swift */; };
 		9894CAC2297199A8007B7995 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CAC1297199A8007B7995 /* Observable.swift */; };
@@ -49,6 +50,7 @@
 		102424357B54476CFBB14D90 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
 		32B81B1A9EF1B4A604AD68B8 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		5047D8378FD9761FB3332E46 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		982E22DB2982A472003C74DC /* RecipeDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailTableViewController.swift; sourceTree = "<group>"; };
 		988C523A2968BDBE00CDFD64 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		988C523D2968BDBE00CDFD64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		988C523F2968BDBE00CDFD64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		988C526E296DD14200CDFD64 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		988C5273296EE3E600CDFD64 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		988C5276296F1F6600CDFD64 /* SearchBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTableViewCell.swift; sourceTree = "<group>"; };
-		988C5278296F1F8000CDFD64 /* RecipeDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		988C5278296F1F8000CDFD64 /* RecipeDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailTableView.swift; sourceTree = "<group>"; };
 		988C527B296F25FE00CDFD64 /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
 		9894CABF29706E69007B7995 /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
 		9894CAC1297199A8007B7995 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -263,7 +265,8 @@
 		9894CAC62971B5ED007B7995 /* RecipeDetail */ = {
 			isa = PBXGroup;
 			children = (
-				988C5278296F1F8000CDFD64 /* RecipeDetailCollectionViewCell.swift */,
+				988C5278296F1F8000CDFD64 /* RecipeDetailTableView.swift */,
+				982E22DB2982A472003C74DC /* RecipeDetailTableViewController.swift */,
 			);
 			path = RecipeDetail;
 			sourceTree = "<group>";
@@ -456,11 +459,12 @@
 				9894CAD32971B803007B7995 /* Config.swift in Sources */,
 				988C526B296C5CFE00CDFD64 /* NetworkService.swift in Sources */,
 				9894CADD297804AA007B7995 /* ClearButtonTableViewCell.swift in Sources */,
+				982E22DC2982A472003C74DC /* RecipeDetailTableViewController.swift in Sources */,
 				9894CAC2297199A8007B7995 /* Observable.swift in Sources */,
 				9894CACC2971B6C7007B7995 /* RecipeListViewController.swift in Sources */,
 				988C5267296C438B00CDFD64 /* Images.swift in Sources */,
 				9894CAC029706E69007B7995 /* AlertProvider.swift in Sources */,
-				988C5279296F1F8000CDFD64 /* RecipeDetailCollectionViewCell.swift in Sources */,
+				988C5279296F1F8000CDFD64 /* RecipeDetailTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
