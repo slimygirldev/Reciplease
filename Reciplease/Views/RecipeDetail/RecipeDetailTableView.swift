@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecipeDetailView: UIView {
+class RecipeDetailTableViewCell: UITableView {
     static let reuseIdentifier = "RecipeDetailTableViewCell"
 
     let favButton: UIButton = {

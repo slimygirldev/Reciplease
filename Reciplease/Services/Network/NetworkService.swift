@@ -36,10 +36,10 @@ class NetworkService {
                           "app_key": Config.apiKey,
                           "type": type]
 
-        guard let url = URL(string: Config.recipeUrl) else {
+        guard let url = URL(string: "https://api.edamam.com/api/recipes/v2?") else {
             return
         }
-
+        debugPrint("url: \(url)")
         AF.request(url, method: .get,
                    parameters: parameters)
         .responseDecodable(of: SearchResponse.self) { [weak self] response in

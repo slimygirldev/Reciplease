@@ -10,7 +10,7 @@ import UIKit
 
 enum AlertMessages: String {
     case noIngredient = "Please enter an ingredient."
-    case noData = "No data received from API endpoint. Please check your request and ensure that the correct parameters are being passed and that the API endpoint is returning data."
+    case noData = "No recipes found for the selected ingredients. Please try again with different ingredients."
     case invalidURL = "Invalid URL. Please check the URL and ensure that it is formatted correctly and leads to a valid endpoint."
     case unexpectedStatusCode = "Unexpected status code received from API endpoint. Please check your request and ensure that the API endpoint is functioning properly."
 }

@@ -40,8 +40,6 @@ class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.endEditing(true)
     }
 
-    
-
     private func setupBindings() {
         viewModel.ingredientsList.bind { [weak self] enteredIngredients in
 //            print("received new ingredient: \(enteredIngredients)")

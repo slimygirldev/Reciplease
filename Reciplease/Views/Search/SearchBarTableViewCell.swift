@@ -70,6 +70,7 @@ class SearchBarTableViewCell: UITableViewCell {
         }
 
         addIngredient?(ingredient)
+        searchBarTextField.text = ""
     }
 
     private func addViews() {
