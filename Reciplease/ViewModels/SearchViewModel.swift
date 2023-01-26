@@ -15,6 +15,8 @@ class SearchViewModel {
 
     var recipes: Observable<[RecipeModel]> = Observable([])
 
+    var isSearching: Observable<Bool> = Observable(false)
+
     init() {
     }
 
@@ -23,7 +25,8 @@ class SearchViewModel {
     }
 
     func addIngredient(_ ingredient: String) {
-        ingredientsList.value.append(ingredient)
+        let newEntry = ingredient.split(separator: ",")
+        ingredientsList.value.append(contentsOf: newEntry.map({String($0)}))
     }
 
     func clearItemList() {
@@ -31,19 +34,20 @@ class SearchViewModel {
     }
 
     func request() {
-        if ingredientsList.value.isEmpty == false {
+        isSearching.value = true
+        if !ingredientsList.value.isEmpty {
+            self.recipes.value = []
             NetworkService.shared.fetchData(entries: ingredientsList.value) { [weak self] result in
-                switch result { 
+                switch result {
                 case .failure(let error):
                     self?.error.value = error.localizedDescription
+                    self?.isSearching.value = false
                     // handle error
                 case .success(let receivedRecipes):
                     self?.recipes.value = receivedRecipes
+                    self?.isSearching.value = false
                 }
             }
-        } else {
-            print("ingredients list is empty")
-            // here vm must notify that something went wrong
         }
     }
 }

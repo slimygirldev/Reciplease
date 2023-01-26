@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 
 class SearchViewController: UIViewController {
+    
     var coordinator: MainCoordinator?
 
     let alertProvider: AlertProvider = AlertProvider()
@@ -16,6 +17,8 @@ class SearchViewController: UIViewController {
     private let viewModel: SearchViewModel = SearchViewModel()
 
     lazy var tableView: SearchTableView = SearchTableView(viewModel: viewModel)
+
+    let spinner: UIActivityIndicatorView = UIActivityIndicatorView()
 
     var searchButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -52,6 +55,16 @@ class SearchViewController: UIViewController {
         setUpBinders()
     }
 
+    func showActivityIndicatory() {
+        let container: UIView = UIView()
+        container.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        container.backgroundColor = .clear
+        spinner.center = self.view.center
+        container.addSubview(spinner)
+        self.view.addSubview(container)
+        spinner.startAnimating()
+    }
+
     @objc func searchRecipesButtonDidTapped(sender: UIButton) {
         sender.isEnabled = false
         viewModel.request()
@@ -60,6 +73,7 @@ class SearchViewController: UIViewController {
             self.present(alertProvider.alertError(alertType: .noIngredients), animated: true, completion: nil)
             sender.isEnabled = true
         }
+        self.showActivityIndicatory()
     }
 
     private func setUpBinders() {
@@ -70,6 +84,7 @@ class SearchViewController: UIViewController {
                     guard let alert = self?.alertProvider.alertError(alertType: .noData) else {
                         return
                     }
+                    self?.spinner.stopAnimating()
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
@@ -77,8 +92,14 @@ class SearchViewController: UIViewController {
                 guard !recipes.isEmpty else {
                     return
                 }
-                self?.searchButton.isEnabled = true
+                DispatchQueue.main.async {
+                    self?.spinner.stopAnimating()
+                }
                 self?.coordinator?.goToRecipePage(recipes)
+            }
+
+            self?.viewModel.isSearching.bind { [weak self] isSearching in
+                self?.searchButton.isEnabled = !isSearching
             }
         }
     }
