@@ -8,18 +8,17 @@
 import UIKit
 
 class RecipeListViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
+    var coordinator: MainCoordinator?
 
-    private let viewModel: SearchViewModel = SearchViewModel()
+    private let viewModel: RecipeListViewModel
 
-    var recipeList: [RecipeModel]
 
-    var collectionView = RecipeListCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let collectionView: RecipeListCollectionView
 
-    init(_ recipeList: [RecipeModel]) {
-        self.recipeList = recipeList
+    init(_ viewModel: RecipeListViewModel) {
+        self.viewModel = viewModel
+        self.collectionView = RecipeListCollectionView(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
-        collectionView.models = recipeList
     }
 
     required init?(coder: NSCoder) {
@@ -36,11 +35,22 @@ class RecipeListViewController: UIViewController {
 
         setupViews()
         setupConstraints()
+        setupBinder()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
+    }
+
+    private func setupBinder() {
+        viewModel.selectedRecipe.bind { [weak self] selectedRecipe in
+            guard let selectedRecipe = selectedRecipe else {
+                return
+                // present error
+            }
+            self?.coordinator?.goToRecipeDetailPage(selectedRecipe)
+        }
     }
 
     private func setupViews() {

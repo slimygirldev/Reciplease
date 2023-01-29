@@ -9,11 +9,13 @@ import UIKit
 
 class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    var models: [RecipeModel] = []
-    let horizontalPadding: Int = 16
+    private let horizontalPadding: Int = 16
 
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: .zero, collectionViewLayout: layout)
+    private let viewModel: RecipeListViewModel
+
+    init(viewModel: RecipeListViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         backgroundColor = .systemBackground
 
         delegate = self
@@ -29,9 +31,13 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return models.count
+        return viewModel.recipeList.value.count
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedRecipe = viewModel.recipeList.value[indexPath.row]
+        viewModel.selectedRecipe.value = selectedRecipe
+    }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,8 +45,8 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
                                                             for: indexPath) as? RecipeMiniatureCollectionViewCell else {
             return UICollectionViewCell()
         }
-        if indexPath.row < models.count {
-            let model = models[indexPath.row]
+        if indexPath.row < viewModel.recipeList.value.count {
+            let model = viewModel.recipeList.value[indexPath.row]
             cell.configure(model: model)
         }
         return cell
