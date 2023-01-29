@@ -8,9 +8,10 @@
 import UIKit
 
 class SearchCoordinator: MainCoordinator {
-
     override func start() {
-        let viewController = SearchViewController()
+        let networkService: NetworkService = NetworkService(urlSession: .shared)
+        let viewModel: SearchViewModel = SearchViewModel(networkService: networkService)
+        let viewController = SearchViewController(viewModel)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }

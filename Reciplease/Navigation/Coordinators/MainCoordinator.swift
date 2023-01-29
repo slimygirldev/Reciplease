@@ -18,7 +18,15 @@ class MainCoordinator: Coordinator {
 
     // ici mettre les fonctions de navigation
     func goToRecipePage(_ recipeList: [RecipeModel] ) {
-        let controller = RecipeListViewController(recipeList    )
+        let viewModel = RecipeListViewModel(recipeList)
+        let controller = RecipeListViewController(viewModel)
+        controller.coordinator = self
+        navigationController.pushViewController(controller, animated: true)
+    }
+
+    func goToRecipeDetailPage(_ recipeModel: RecipeModel) {
+        let viewModel = RecipeDetailViewModel(recipeModel: recipeModel)
+        let controller = RecipeDetailViewController(viewModel)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }

@@ -13,7 +13,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Labels
 
-    let recipeNameLabel: UILabel = {
+    private let recipeNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textColor = .black
@@ -25,7 +25,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    let ingredientsListLabel: UILabel = {
+    private let ingredientsListLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = .systemGray
@@ -39,7 +39,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Image
 
-    let recipeImage: UIImageView = {
+    private let recipeImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -49,7 +49,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
 //MARK: - StackViews
 
-    let mainStackView: UIStackView = {
+    private let mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fill
@@ -61,7 +61,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return mainStackView
     }()
 
-    let secondaryStackView: UIStackView = {
+    private let secondaryStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fill
@@ -145,12 +145,12 @@ struct RecipeMiniatureCollectionViewCell_Previews: PreviewProvider {
         Group {
             RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(title: "Pizza Margarita",
                                                                                ingredients: ["Tomato","Mozzarella","Basilic", "Tomato","Mozzarella","Basilic"],
-                                                                               image: nil))
+                                                                               image: nil, ingredientLines: nil))
 
 
             RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(title: "Pizza Margarita",
                                                                                ingredients: ["Tomato","Mozzarella","Basilic", "olives", "mustrad", "cheese"],
-                                                                               image: nil))
+                                                                               image: nil, ingredientLines: nil))
             .previewDisplayName("Long name & ingredients list preview")
         }
         .frame(width: UIScreen.main.bounds.width,

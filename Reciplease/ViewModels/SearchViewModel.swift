@@ -17,7 +17,10 @@ class SearchViewModel {
 
     var isSearching: Observable<Bool> = Observable(false)
 
-    init() {
+    private let networkService: NetworkProcotol
+
+    init(networkService: NetworkProcotol) {
+        self.networkService = networkService
     }
 
     required init?(coder: NSCoder) {
@@ -37,7 +40,7 @@ class SearchViewModel {
         isSearching.value = true
         if !ingredientsList.value.isEmpty {
             self.recipes.value = []
-            NetworkService.shared.fetchData(entries: ingredientsList.value) { [weak self] result in
+            networkService.fetchData(entries: ingredientsList.value) { [weak self] result in
                 switch result {
                 case .failure(let error):
                     self?.error.value = error.localizedDescription
