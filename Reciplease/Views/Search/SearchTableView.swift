@@ -9,7 +9,7 @@ import UIKit
 
 class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
-    var viewModel: SearchViewModel
+    private var viewModel: SearchViewModel
 
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -42,7 +42,6 @@ class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
     private func setupBindings() {
         viewModel.ingredientsList.bind { [weak self] enteredIngredients in
-//            print("received new ingredient: \(enteredIngredients)")
             self?.reloadData()
         }
     }
@@ -73,7 +72,6 @@ class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
                                                            for: indexPath) as? SearchBarTableViewCell else { return UITableViewCell() }
             // Closure reception ingredient
             cell.addIngredient = { [weak self] ingredient in
-//                print(ingredient)
                 self?.viewModel.addIngredient(ingredient)
             }
 

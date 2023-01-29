@@ -16,13 +16,21 @@ enum APIError: Error {
     case noIngredients
 }
 
-class NetworkService {
+protocol NetworkProcotol {
+    var networkClient: URLSession { get }
 
-    static let shared = NetworkService()
+    func fetchData(entries: [String],
+                   completion: @escaping (Result<[RecipeModel], APIError>) -> Void)
+}
+
+class NetworkService: NetworkProcotol {
+    var networkClient: URLSession
 
     private let type: String = "public"
 
-    init() {
+
+    init(urlSession: URLSession) {
+        networkClient = urlSession
     }
 
     func fetchData(entries: [String],
@@ -55,17 +63,17 @@ class NetworkService {
                     let imageUrl: String = recipe.images.regular.url
                     self?.downloadImage(from: imageUrl) { image in
                         let recipe: RecipeModel = RecipeModel(title: recipe.label,
+                                                              // extract food (ingredient name) property from ingredients array
                                                               ingredients: recipe.ingredients.map{ $0.food },
-                                                              image: image)
+                                                              image: image,
+                                                              ingredientLines: recipe.ingredientLines)
                         recipeModel.append(recipe)
                         if recipeModel.count == searchResponse.hits.count {
                             completion(.success(recipeModel))
                         }
                     }
                 }
-            case .failure(let error):
-                // handle error ?
-
+            case .failure(_):
                 completion(.failure(.unexpectedStatusCode))
             }
         }

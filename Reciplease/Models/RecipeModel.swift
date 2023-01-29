@@ -11,4 +11,5 @@ struct RecipeModel {
     var title: String
     var ingredients: [String]
     var image: UIImage?
+    var ingredientLines: [String]?
 }

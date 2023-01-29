@@ -12,7 +12,7 @@ class SearchBarTableViewCell: UITableViewCell {
 
     var addIngredient: ((String) -> Void)?
 
-    let searchBarTextField: UITextField = {
+    private let searchBarTextField: UITextField = {
         let searchBarTextField = UITextField()
         searchBarTextField.placeholder = "Enter an ingredient's name here ..."
         searchBarTextField.font = .systemFont(ofSize: 16)
@@ -27,7 +27,7 @@ class SearchBarTableViewCell: UITableViewCell {
         return searchBarTextField
     }()
 
-    let addButton: UIButton = {
+    private lazy var addButton: UIButton = {
         let addButton = UIButton(type: .custom)
         addButton.setTitle("Add", for: .normal)
         addButton.backgroundColor = UIColor(red: 0.161, green: 0.8, blue: 0.373, alpha: 1)
@@ -39,7 +39,7 @@ class SearchBarTableViewCell: UITableViewCell {
         return addButton
     }()
 
-    let mainStackView: UIStackView = {
+    private let mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .horizontal
         mainStackView.distribution = .fill
