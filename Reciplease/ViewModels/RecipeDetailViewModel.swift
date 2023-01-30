@@ -7,8 +7,7 @@
 
 import UIKit
 
-class RecipeDetailViewModel {
-
+final class RecipeDetailViewModel {
     private var favoriteRecipes: Observable<[RecipeModel]> = Observable([])
 
     private var isFavorite: Observable<Bool> = Observable(false)

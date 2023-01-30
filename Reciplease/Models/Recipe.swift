@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe: Codable {
+struct Recipe: Decodable {
     let uri: String
     let label: String
     let image: String

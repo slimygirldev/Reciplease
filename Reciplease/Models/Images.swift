@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Images: Codable {
+struct Images: Decodable {
     let thumbnail: Large
     let small: Large
     let regular: Large
@@ -21,7 +21,7 @@ struct Images: Codable {
     }
 }
 
-struct Large: Codable {
+struct Large: Decodable {
     let url: String
     let width: Int
     let height: Int

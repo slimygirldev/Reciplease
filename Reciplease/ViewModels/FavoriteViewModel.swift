@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-class FavoriteViewModel {
+final class FavoriteViewModel {
     
 }

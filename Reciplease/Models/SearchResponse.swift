@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - SearchResponse
-struct SearchResponse: Codable {
+struct SearchResponse: Decodable {
     let from: Int
     let to: Int
     let count: Int
@@ -23,7 +23,7 @@ struct SearchResponse: Codable {
 }
 
 // MARK: - Hit
-struct Hit: Codable {
+struct Hit: Decodable {
     let recipe: Recipe
     let links: Links
 
@@ -34,7 +34,7 @@ struct Hit: Codable {
 }
 
 // MARK: - Links
-struct Links: Codable {
+struct Links: Decodable {
     let next: Next?
 
     enum CodingKeys: String, CodingKey {
@@ -43,7 +43,7 @@ struct Links: Codable {
 }
 
 // MARK: - Next
-struct Next: Codable {
+struct Next: Decodable {
     let href: String
     let title: String
 }

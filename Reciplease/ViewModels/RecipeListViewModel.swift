@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RecipeListViewModel {
+final class RecipeListViewModel {
     private var error: Observable<String?> = Observable(nil)
 
     var recipeList: Observable<[RecipeModel]>

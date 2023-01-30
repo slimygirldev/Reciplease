@@ -78,6 +78,8 @@ class NetworkService: NetworkProcotol {
         }
     }
 
+    // method cancel image a mettre en place
+
     func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(nil)

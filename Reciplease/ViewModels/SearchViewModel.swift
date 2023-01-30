@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewModel {
+final class SearchViewModel {
 
     var error: Observable<String?> = Observable(nil)
 

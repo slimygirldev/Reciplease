@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredient: Codable {
+struct Ingredient: Decodable {
     let text: String
     let quantity: Float
     let measure: String?
