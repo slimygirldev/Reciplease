@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class ItemListTableViewCell: UITableViewCell {
     static let reuseIdentifier = "ItemListTableViewCell"
 
-    private let itemLabel: UILabel = {
-        let itemLabel = UILabel()
+    private let itemLabel: MarqueeLabel = {
+        let itemLabel = MarqueeLabel()
         itemLabel.font = .systemFont(ofSize: 18)
         itemLabel.accessibilityLabel = "Name of the ingredient"
         itemLabel.accessibilityHint = "This is an ingredient name, added with add button"

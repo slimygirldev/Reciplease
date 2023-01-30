@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class RecipeListViewModel {
-    var error: Observable<String?> = Observable(nil)
+    private var error: Observable<String?> = Observable(nil)
 
     var recipeList: Observable<[RecipeModel]>
 
@@ -18,10 +18,5 @@ class RecipeListViewModel {
     init(_ recipeList: [RecipeModel]) {
         self.recipeList = Observable(recipeList)
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
 
 }

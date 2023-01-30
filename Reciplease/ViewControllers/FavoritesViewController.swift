@@ -8,9 +8,12 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
-    weak var coordinator: FavoritesCoordinator?
+    var coordinator: FavoritesCoordinator?
 
-    init() {
+    private let viewModel: FavoriteViewModel
+
+    init(_ viewModel: FavoriteViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = UIImage(systemName: "heart.fill")
         tabBarItem.title = "Favorites"

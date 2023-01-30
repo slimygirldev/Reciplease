@@ -9,7 +9,8 @@ import UIKit
 
 class FavoritesCoordinator: MainCoordinator {
     override func start() {
-        let viewController = FavoritesViewController()
+        let viewModel: FavoriteViewModel = FavoriteViewModel()
+        let viewController = FavoritesViewController(viewModel)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
