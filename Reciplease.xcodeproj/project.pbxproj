@@ -45,6 +45,7 @@
 		9894CAE3297821EF007B7995 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CAE2297821EF007B7995 /* TabBarCoordinator.swift */; };
 		9894CAE82978393D007B7995 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CAE72978393D007B7995 /* SearchCoordinator.swift */; };
 		9894CAEA29783A00007B7995 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CAE929783A00007B7995 /* FavoritesCoordinator.swift */; };
+		98C594D42987E1D10021F7F9 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C594D32987E1D10021F7F9 /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		9894CAE2297821EF007B7995 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		9894CAE72978393D007B7995 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		9894CAE929783A00007B7995 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		98C594D32987E1D10021F7F9 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +140,12 @@
 				9894CAC3297199AB007B7995 /* Core */,
 				988C5270296EDE5F00CDFD64 /* Mock */,
 				988C52592968C12100CDFD64 /* AppleGenerated */,
+				988C52512968BF3400CDFD64 /* Navigation */,
 				988C525B296C3F5300CDFD64 /* Services */,
 				988C52522968BF4200CDFD64 /* Models */,
-				988C52532968BF4C00CDFD64 /* Controllers */,
+				988C52532968BF4C00CDFD64 /* ViewControllers */,
 				988C525A296C3AF900CDFD64 /* ViewModels */,
 				988C52542968BF5400CDFD64 /* Views */,
-				988C52512968BF3400CDFD64 /* Navigation */,
 				988C524B2968BDBF00CDFD64 /* Info.plist */,
 				988C527A296F236400CDFD64 /* Ressources */,
 			);
@@ -172,7 +174,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		988C52532968BF4C00CDFD64 /* Controllers */ = {
+		988C52532968BF4C00CDFD64 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				988C52552968BF9000CDFD64 /* SearchViewController.swift */,
@@ -180,7 +182,7 @@
 				9894CAC92971B6AB007B7995 /* RecipeDetailViewController.swift */,
 				9894CACB2971B6C7007B7995 /* RecipeListViewController.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		988C52542968BF5400CDFD64 /* Views */ = {
@@ -209,6 +211,7 @@
 				988C525C296C3F8900CDFD64 /* SearchViewModel.swift */,
 				9894CAC42971B58F007B7995 /* RecipeDetailViewModel.swift */,
 				982E22E329854FED003C74DC /* RecipeListViewModel.swift */,
+				98C594D32987E1D10021F7F9 /* FavoriteViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				988C523E2968BDBE00CDFD64 /* AppDelegate.swift in Sources */,
 				988C5263296C423900CDFD64 /* SearchResponse.swift in Sources */,
 				9894CAE3297821EF007B7995 /* TabBarCoordinator.swift in Sources */,
+				98C594D42987E1D10021F7F9 /* FavoriteViewModel.swift in Sources */,
 				982E22E2298418F9003C74DC /* RecipeImageDetailTableViewCell.swift in Sources */,
 				982E22E029840111003C74DC /* RecipeDetailTableView.swift in Sources */,
 				9894CAE82978393D007B7995 /* SearchCoordinator.swift in Sources */,
@@ -616,6 +620,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -645,6 +650,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,6 +8,7 @@
 import Foundation
 
 final class Observable<T> {
+
     var value: T {
         didSet {
             // whenever the value changes it's going to use listener
@@ -21,6 +22,7 @@ final class Observable<T> {
         self.value = value
     }
 
+    // Define a listener to be notified when value change
     func bind(listener: @escaping(T) -> Void) {
         listener(value)
         self.listener = listener

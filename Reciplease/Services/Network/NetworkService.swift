@@ -47,7 +47,6 @@ class NetworkService: NetworkProcotol {
         guard let url = URL(string: "https://api.edamam.com/api/recipes/v2?") else {
             return
         }
-        debugPrint("url: \(url)")
         AF.request(url, method: .get,
                    parameters: parameters)
         .responseDecodable(of: SearchResponse.self) { [weak self] response in

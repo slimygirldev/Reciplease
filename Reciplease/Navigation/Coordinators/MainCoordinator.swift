@@ -16,7 +16,7 @@ class MainCoordinator: Coordinator {
     }
     func start() {}
 
-    // ici mettre les fonctions de navigation
+    // Navigation methods
     func goToRecipePage(_ recipeList: [RecipeModel] ) {
         let viewModel = RecipeListViewModel(recipeList)
         let controller = RecipeListViewController(viewModel)

@@ -76,6 +76,7 @@ class SearchViewController: UIViewController {
     }
 
     private func setUpBinders() {
+        // setting all the listeners of search
         viewModel.error.bind { [weak self] error in
             if let error = error {
                 print("received error failed to request: \(error)")
@@ -87,6 +88,7 @@ class SearchViewController: UIViewController {
                     self?.present(alert, animated: true, completion: nil)
                 }
             }
+            // Checking if recipes is empty / if not calling coordinator to present the recipes list received from request
             self?.viewModel.recipes.bind { [weak self] recipes in
                 guard !recipes.isEmpty else {
                     return
@@ -96,12 +98,13 @@ class SearchViewController: UIViewController {
                 }
                 self?.coordinator?.goToRecipePage(recipes)
             }
-
+            // setting the listener to 
             self?.viewModel.isSearching.bind { [weak self] isSearching in
                 self?.searchButton.isEnabled = !isSearching
             }
         }
     }
+
     private func setupViews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)

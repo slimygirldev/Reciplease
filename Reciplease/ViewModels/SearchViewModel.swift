@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchViewModel {
-    // Should be private and they should be accessed through methods.
+
     var error: Observable<String?> = Observable(nil)
 
     var ingredientsList: Observable<[String]> = Observable([])
@@ -17,7 +17,7 @@ class SearchViewModel {
 
     var isSearching: Observable<Bool> = Observable(false)
 
-    private let networkService: NetworkProcotol
+    let networkService: NetworkProcotol
 
     init(networkService: NetworkProcotol) {
         self.networkService = networkService
