@@ -5,10 +5,10 @@ Foodies partner App
 Search recipes with your fridge's ingredients !
 
 
-<img src="https://user-images.githubusercontent.com/63591976/215776904-9e5d8fe9-6c83-4bf6-b48e-195ed0dbc9aa.png" alt="drawing" width="65"/>
+<img src="https://user-images.githubusercontent.com/63591976/215776904-9e5d8fe9-6c83-4bf6-b48e-195ed0dbc9aa.png" alt="drawing" width="600"/>
 
 
-<img src="https://user-images.githubusercontent.com/63591976/215777034-6d7c1540-87e1-4fba-8e37-f598a549f551.png" alt="drawing" width="65"/>
+<img src="https://user-images.githubusercontent.com/63591976/215777034-6d7c1540-87e1-4fba-8e37-f598a549f551.png" alt="drawing" width="600"/>
 
 
 
