@@ -20,6 +20,7 @@ Supports device's theme (light/dark).
 
 
 Techs :
+- MVVM architecture
 - Observer 
 - Coordinator pattern
 - Depedencies (Alamofire - Alamofire Image - MarqueeLabel)
