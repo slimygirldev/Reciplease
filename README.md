@@ -15,6 +15,8 @@ Search recipes with your fridge's ingredients !
 This application was developed as part of the Openclassrooms iOS development training.
 The user interface was entirely programmatically created using CollectionView and TableViews.
 I use MVVM architecture.
+This application is responsive and has accessibility on most of its assets.
+Supports device's theme (light/dark).
 
 
 Techs :
