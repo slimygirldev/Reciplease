@@ -8,11 +8,16 @@
 import UIKit
 
 class SearchBarTableViewCell: UITableViewCell {
+
+    // MARK: - Properties
+
     static let reuseIdentifier = "SearchBarTableViewCell"
 
     var addIngredient: ((String) -> Void)?
 
-    private let searchBarTextField: UITextField = {
+    // MARK: - Labels
+    
+    private lazy var searchBarTextField: UITextField = {
         let searchBarTextField = UITextField()
         searchBarTextField.placeholder = "Enter an ingredient's name here ..."
         searchBarTextField.font = .systemFont(ofSize: 16)
@@ -27,6 +32,8 @@ class SearchBarTableViewCell: UITableViewCell {
         return searchBarTextField
     }()
 
+    // MARK: - Buttons
+
     private lazy var addButton: UIButton = {
         let addButton = UIButton(type: .custom)
         addButton.setTitle("Add", for: .normal)
@@ -39,7 +46,9 @@ class SearchBarTableViewCell: UITableViewCell {
         return addButton
     }()
 
-    private let mainStackView: UIStackView = {
+    // MARK: - Stacks
+
+    private lazy var mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .horizontal
         mainStackView.distribution = .fill
@@ -51,6 +60,8 @@ class SearchBarTableViewCell: UITableViewCell {
         mainStackView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return mainStackView
     }()
+
+    // MARK: - Methods
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,6 +83,8 @@ class SearchBarTableViewCell: UITableViewCell {
         addIngredient?(ingredient)
         searchBarTextField.text = ""
     }
+
+    // MARK: - Setup views & Constraints
 
     private func addViews() {
         mainStackView.addArrangedSubview(searchBarTextField)

@@ -8,16 +8,22 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
+
+    // MARK: - Properties
+
     var coordinator: FavoritesCoordinator?
 
     private let viewModel: FavoriteViewModel
+
+    private var recipeListeCollectionView: RecipeListCollectionView?
+
+    // MARK: - Methods
 
     init(_ viewModel: FavoriteViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = UIImage(systemName: "heart.fill")
         tabBarItem.title = "Favorites"
-
     }
 
     required init?(coder: NSCoder) {
@@ -30,5 +36,17 @@ class FavoritesViewController: UIViewController {
         title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+
+        setupConstraints()
+        addView()
     }
+
+    private func addView() {
+
+    }
+
+    private func setupConstraints() {
+
+    }
+
 }

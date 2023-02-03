@@ -9,9 +9,14 @@
 import UIKit
 
 class ClearButtonTableViewCell: UITableViewCell {
+
+    // MARK: - Properties
+
     static let reuseIdentifier = "ClearButtonTableViewCell"
 
     var clearIngredientsList: (() -> Void)?
+
+    // MARK: - Button
 
     private lazy var clearButton: UIButton = {
         let clearButton = UIButton(type: .custom)
@@ -25,7 +30,9 @@ class ClearButtonTableViewCell: UITableViewCell {
         return clearButton
     }()
 
-    private let mainStackView: UIStackView = {
+    // MARK: - Stack
+
+    private lazy var mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .horizontal
         mainStackView.distribution = .fill
@@ -35,6 +42,8 @@ class ClearButtonTableViewCell: UITableViewCell {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         return mainStackView
     }()
+
+    // MARK: - Methods
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,6 +66,8 @@ class ClearButtonTableViewCell: UITableViewCell {
         clearIngredientsList?()
     }
 
+    // MARK: - Setup views & Constraints
+    
     private func addViews() {
         mainStackView.addArrangedSubview(clearButton)
         contentView.addSubview(mainStackView)

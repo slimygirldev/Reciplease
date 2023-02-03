@@ -9,11 +9,14 @@ import UIKit
 import SwiftUI
 
 class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
+
+    // MARK: - Properties
+
     static let reuseIdentifier = "RecipeMiniatureCollectionViewCell"
 
 // MARK: - Labels
 
-    private let recipeNameLabel: UILabel = {
+    private lazy var recipeNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textColor = .black
@@ -25,7 +28,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let ingredientsListLabel: UILabel = {
+    private lazy var ingredientsListLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = .systemGray
@@ -39,7 +42,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Image
 
-    private let recipeImage: UIImageView = {
+    private lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -47,9 +50,9 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return image
     }()
 
-//MARK: - StackViews
+//MARK: - Stacks
 
-    private let mainStackView: UIStackView = {
+    private lazy var mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fill
@@ -61,7 +64,7 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         return mainStackView
     }()
 
-    private let secondaryStackView: UIStackView = {
+    private lazy var secondaryStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fill
@@ -103,7 +106,8 @@ class RecipeMiniatureCollectionViewCell: UICollectionViewCell {
         self.recipeImage.image = model.image ?? UIImage(named: "noImage")
     }
 
-
+    // MARK: - Setup views & Constraints
+    
     private func addViews() {
         addSubview(mainStackView)
         mainStackView.addArrangedSubview(recipeImage)

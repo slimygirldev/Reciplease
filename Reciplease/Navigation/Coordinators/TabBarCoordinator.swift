@@ -9,13 +9,16 @@ import UIKit
 
 class TabBarCoordinator {
 
+    // MARK: - Properties
+
     var tabBarController: TabBarViewController
+
+    // MARK: - Methods
 
     init(_ navigation: TabBarViewController) {
         self.tabBarController = navigation
     }
     func start() {
-
         let firstNavigationController = UINavigationController()
 
         let firstCoordinator = SearchCoordinator(navigationController: firstNavigationController)

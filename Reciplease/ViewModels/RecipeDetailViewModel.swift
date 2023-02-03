@@ -8,17 +8,20 @@
 import UIKit
 
 final class RecipeDetailViewModel {
-    private var favoriteRecipes: Observable<[RecipeModel]> = Observable([])
 
-    private var isFavorite: Observable<Bool> = Observable(false)
+    // MARK: - Properties
+
+    var isFavorite: Observable<Bool> = Observable(false)
 
     var recipe: Observable<RecipeModel>
 
+    // MARK: - Methods
+    
     init(recipeModel: RecipeModel) {
         self.recipe = Observable(recipeModel)
     }
 
-    func addToFavoriteList(_recipe: RecipeModel) {
-        
+    func addToFavoriteList() {
+        //verifier if isFavorite
     }
 }

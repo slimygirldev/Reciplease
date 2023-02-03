@@ -8,24 +8,32 @@
 import UIKit
 
 class RecipeDetailViewController: UIViewController {
+
+    // MARK: - Properties
+    
     weak var coordinator: MainCoordinator?
+
+    var onFavorite: ((_ recipe: RecipeModel) -> Void)?
 
     private let alertProvider: AlertProvider = AlertProvider()
 
     private let viewModel: RecipeDetailViewModel
 
     private lazy var tableView: RecipeDetailTableView = RecipeDetailTableView(viewModel: viewModel)
+
+    // MARK: - Buttons
     
-    private lazy var goToDirectionButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Go to recipe directions", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 24)
-        button.backgroundColor = .gray
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(goToRecipeDirections), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var favoriteButton: UIBarButtonItem = {
+        let favoritButton = UIBarButtonItem(title: "favorite",
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(handleFavoriteRecipe))
+        favoritButton.image = UIImage(named: "heartIco")?.withRenderingMode(.alwaysTemplate)
+        favoritButton.tintColor = .lightGray
+        return favoritButton
     }()
+
+    // MARK: - Methods
 
     init(_ viewModel: RecipeDetailViewModel) {
         self.viewModel = viewModel
@@ -41,29 +49,38 @@ class RecipeDetailViewController: UIViewController {
         edgesForExtendedLayout = []
         view.backgroundColor = .systemBackground
         title = String(viewModel.recipe.value.title)
+        navigationItem.rightBarButtonItem = favoriteButton
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
         setupViews()
         setupConstraints()
+        setUpBinders()
     }
 
-    @objc func goToRecipeDirections() {
+    @objc func handleRecipeDirections() {
 
     }
 
-    @objc func addToFavoriteRecipes() {
-
+    @objc func handleFavoriteRecipe() {
+        viewModel.isFavorite.value = true
+        viewModel.addToFavoriteList()
+        // add recipe in core data ()
     }
 
     private func setUpBinders() {
-        
+        self.viewModel.isFavorite.bind(listener: { [weak self] isFavorite in
+            self?.favoriteButton.isSelected = isFavorite
+            self?.favoriteButton.tintColor = isFavorite ? .red : .lightGray
+        })
     }
+
+    // MARK: - Setup views & Constraints
 
     private func setupViews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-        view.addSubview(goToDirectionButton)
+//        view.addSubview(goToDirectionButton)
     }
 
     private func setupConstraints() {
@@ -71,12 +88,7 @@ class RecipeDetailViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-
-            goToDirectionButton.heightAnchor.constraint(equalToConstant: 44),
-            goToDirectionButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
-            goToDirectionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            goToDirectionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            goToDirectionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
     }

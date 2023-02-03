@@ -9,6 +9,8 @@ import UIKit
 
 final class SearchViewModel {
 
+    // MARK: - Properties
+
     var error: Observable<String?> = Observable(nil)
 
     var ingredientsList: Observable<[String]> = Observable([])
@@ -19,6 +21,8 @@ final class SearchViewModel {
 
     let networkService: NetworkProcotol
 
+    // MARK: - Methods
+    
     init(networkService: NetworkProcotol) {
         self.networkService = networkService
     }

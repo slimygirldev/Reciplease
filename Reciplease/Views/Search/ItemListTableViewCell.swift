@@ -9,18 +9,25 @@ import UIKit
 import MarqueeLabel
 
 class ItemListTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
     static let reuseIdentifier = "ItemListTableViewCell"
 
-    private let itemLabel: MarqueeLabel = {
-        let itemLabel = MarqueeLabel()
+    // MARK: - Label
+
+    private lazy var itemLabel: UILabel = {
+        let itemLabel = UILabel()
         itemLabel.font = .systemFont(ofSize: 18)
+        itemLabel.lineBreakMode = .byTruncatingTail
         itemLabel.accessibilityLabel = "Name of the ingredient"
         itemLabel.accessibilityHint = "This is an ingredient name, added with add button"
         itemLabel.translatesAutoresizingMaskIntoConstraints = false
         return itemLabel
     }()
 
-    private let mainStackView: UIStackView = {
+    // MARK: - Stack
+
+    private lazy var mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .vertical
         mainStackView.distribution = .fill
@@ -30,6 +37,8 @@ class ItemListTableViewCell: UITableViewCell {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         return mainStackView
     }()
+
+    // MARK: - Methods
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,6 +54,7 @@ class ItemListTableViewCell: UITableViewCell {
         itemLabel.text = item
     }
 
+    // MARK: - Setup views & Constraints
     private func addViews() {
         addSubview(mainStackView)
         mainStackView.addArrangedSubview(itemLabel)

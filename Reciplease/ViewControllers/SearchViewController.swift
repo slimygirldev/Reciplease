@@ -10,6 +10,8 @@ import Foundation
 
 class SearchViewController: UIViewController {
 
+    // MARK: - Properties
+
     var coordinator: MainCoordinator?
 
     private let alertProvider: AlertProvider = AlertProvider()
@@ -19,6 +21,8 @@ class SearchViewController: UIViewController {
     private lazy var tableView: SearchTableView = SearchTableView(viewModel: viewModel)
 
     private let spinner: UIActivityIndicatorView = UIActivityIndicatorView()
+
+    // MARK: - Button
 
     private lazy var searchButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -30,6 +34,8 @@ class SearchViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    // MARK: - Methods
 
     init(_ viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -105,6 +111,8 @@ class SearchViewController: UIViewController {
         }
     }
 
+    // MARK: - Setup views & Constraints
+    
     private func setupViews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)

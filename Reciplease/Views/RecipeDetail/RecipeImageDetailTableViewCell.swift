@@ -9,11 +9,14 @@ import Foundation
 import UIKit
 
 class RecipeImageDetailTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+
     static let reuseIdentifier = "RecipeImageDetailTableViewCell"
 
     //MARK: - Image
 
-    private let recipeImage: UIImageView = {
+    private lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -25,7 +28,7 @@ class RecipeImageDetailTableViewCell: UITableViewCell {
 
     //MARK: - Stacks
 
-    private let mainStackView: UIStackView = {
+    private lazy var mainStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 5
@@ -38,6 +41,8 @@ class RecipeImageDetailTableViewCell: UITableViewCell {
         return stack
     }()
 
+    // MARK: - Methods
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
@@ -51,6 +56,8 @@ class RecipeImageDetailTableViewCell: UITableViewCell {
     func configure(image: UIImage?) {
         self.recipeImage.image = image ?? UIImage(named: "noImage")
     }
+
+    // MARK: - Setup views & Constraints
 
     private func addViews() {
         contentView.addSubview(mainStackView)

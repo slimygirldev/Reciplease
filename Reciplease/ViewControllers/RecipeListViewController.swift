@@ -8,16 +8,23 @@
 import UIKit
 
 class RecipeListViewController: UIViewController {
+
+    // MARK: - Properties
+
     var coordinator: MainCoordinator?
 
     private let viewModel: RecipeListViewModel
 
-
     private let collectionView: RecipeListCollectionView
+
+    // MARK: - Methods
 
     init(_ viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
-        self.collectionView = RecipeListCollectionView(viewModel: viewModel)
+        self.collectionView = RecipeListCollectionView(recipes: viewModel.recipeList.value)
+        self.collectionView.onSelected = { recipe in
+            viewModel.selectedRecipe.value = recipe
+        }
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -53,6 +60,8 @@ class RecipeListViewController: UIViewController {
         }
     }
 
+    // MARK: - Setup views & Constraints
+    
     private func setupViews() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)

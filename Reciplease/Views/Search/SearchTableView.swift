@@ -9,7 +9,11 @@ import UIKit
 
 class SearchTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
+    // MARK: - Properties
+    
     private var viewModel: SearchViewModel
+
+    // MARK: - Methods
 
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel

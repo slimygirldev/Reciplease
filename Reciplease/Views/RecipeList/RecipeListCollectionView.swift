@@ -9,12 +9,18 @@ import UIKit
 
 class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // MARK: - Properties
+
     private let horizontalPadding: Int = 16
 
-    private let viewModel: RecipeListViewModel
+    private let recipes: [RecipeModel]
 
-    init(viewModel: RecipeListViewModel) {
-        self.viewModel = viewModel
+    var onSelected: ((_ recipe: RecipeModel) -> Void)?
+
+    // MARK: - Methods
+
+    init(recipes: [RecipeModel]) {
+        self.recipes = recipes
         super.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         backgroundColor = .systemBackground
 
@@ -29,14 +35,17 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
         fatalError("init(coder:) has not been implemented")
     }
 
+
+
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.recipeList.value.count
+        return recipes.count
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedRecipe = viewModel.recipeList.value[indexPath.row]
-        viewModel.selectedRecipe.value = selectedRecipe
+        let selectedRecipe = recipes[indexPath.row]
+//        viewModel.selectedRecipe.value = selectedRecipe
+        onSelected?(selectedRecipe)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -45,13 +54,15 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
                                                             for: indexPath) as? RecipeMiniatureCollectionViewCell else {
             return UICollectionViewCell()
         }
-        if indexPath.row < viewModel.recipeList.value.count {
-            let model = viewModel.recipeList.value[indexPath.row]
+        if indexPath.row < recipes.count {
+            let model = recipes[indexPath.row]
             cell.configure(model: model)
         }
         return cell
     }
 }
+
+// MARK: - Extensions
 
 extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

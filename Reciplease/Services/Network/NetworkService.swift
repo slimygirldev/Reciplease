@@ -9,12 +9,16 @@ import Alamofire
 import AlamofireImage
 import Foundation
 
+// MARK: - Error
+
 enum APIError: Error {
     case invalidURL
     case unexpectedStatusCode
     case noData
     case noIngredients
 }
+
+// MARK: - Protocol
 
 protocol NetworkProcotol {
     var networkClient: URLSession { get }
@@ -24,14 +28,20 @@ protocol NetworkProcotol {
 }
 
 class NetworkService: NetworkProcotol {
+
+    // MARK: - Properties
+
     var networkClient: URLSession
 
     private let type: String = "public"
 
+    // MARK: - Methods
 
     init(urlSession: URLSession) {
         networkClient = urlSession
     }
+
+    // MARK: - Request
 
     func fetchData(entries: [String],
                    completion: @escaping (Result<[RecipeModel], APIError>) -> Void) {
@@ -78,7 +88,7 @@ class NetworkService: NetworkProcotol {
         }
     }
 
-    // method cancel image a mettre en place
+    // MARK: - Image Method
 
     func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: urlString) else {

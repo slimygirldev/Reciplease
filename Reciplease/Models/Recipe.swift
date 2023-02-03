@@ -7,16 +7,15 @@
 
 import Foundation
 
+// MARK: - Recipe
+
 struct Recipe: Decodable {
     let uri: String
     let label: String
     let image: String
     let images: Images
-    let source: String
     let url: String
     let shareAs: String
     let ingredientLines: [String]
     let ingredients: [Ingredient]
 }
-
-

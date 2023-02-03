@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Ingredient
+
 struct Ingredient: Decodable {
     let text: String
     let quantity: Float

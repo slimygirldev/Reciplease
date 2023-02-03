@@ -10,8 +10,12 @@ import UIKit
 
 class RecipeDetailTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
+    // MARK: - Properties
+
     private var viewModel: RecipeDetailViewModel
 
+    // MARK: - Methods
+    
     init(viewModel: RecipeDetailViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero, style: .insetGrouped)

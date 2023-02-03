@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - SearchResponse
+
 struct SearchResponse: Decodable {
     let from: Int
     let to: Int
@@ -23,6 +24,7 @@ struct SearchResponse: Decodable {
 }
 
 // MARK: - Hit
+
 struct Hit: Decodable {
     let recipe: Recipe
     let links: Links
@@ -34,6 +36,7 @@ struct Hit: Decodable {
 }
 
 // MARK: - Links
+
 struct Links: Decodable {
     let next: Next?
 
@@ -43,6 +46,7 @@ struct Links: Decodable {
 }
 
 // MARK: - Next
+
 struct Next: Decodable {
     let href: String
     let title: String

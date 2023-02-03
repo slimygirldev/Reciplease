@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Error messages
+
 enum AlertMessages: String {
     case noIngredient = "Please enter an ingredient."
     case noData = "No recipes found for the selected ingredients. Please try again with different ingredients."
@@ -17,6 +19,8 @@ enum AlertMessages: String {
 
 class AlertProvider: Error {
 
+    // MARK: - Methods
+    
     func alertError(alertType: APIError) -> UIAlertController {
         switch alertType {
         case .noData:

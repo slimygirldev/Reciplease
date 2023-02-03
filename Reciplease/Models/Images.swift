@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Images
+
 struct Images: Decodable {
     let thumbnail: Large
     let small: Large
@@ -20,6 +22,8 @@ struct Images: Decodable {
         case large = "LARGE"
     }
 }
+
+// MARK: - Large
 
 struct Large: Decodable {
     let url: String

@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchCoordinator: MainCoordinator {
+    // ViewModel creation and injection inside ViewController
+    // ViewController creation and presentation
     override func start() {
         let networkService: NetworkService = NetworkService(urlSession: .shared)
         let viewModel: SearchViewModel = SearchViewModel(networkService: networkService)
