@@ -18,6 +18,8 @@ final class CoreDataStack {
         return CoreDataStack.shared.persistentContainer.viewContext
     }
 
+    private init() {}
+    
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: persistentContainerName)
         container.loadPersistentStores { storeDescription, error in
@@ -27,4 +29,15 @@ final class CoreDataStack {
         }
         return container
     }()
+
+    lazy var managedContext: NSManagedObjectContext = persistentContainer.viewContext
+
+    func saveContext() {
+        guard managedContext.hasChanges else { return }
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
 }

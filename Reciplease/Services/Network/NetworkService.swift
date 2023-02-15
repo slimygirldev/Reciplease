@@ -71,7 +71,8 @@ class NetworkService: NetworkProcotol {
                     let recipe: Recipe = hit.recipe
                     let imageUrl: String = recipe.images.regular.url
                     self?.downloadImage(from: imageUrl) { image in
-                        let recipe: RecipeModel = RecipeModel(title: recipe.label,
+                        let recipe: RecipeModel = RecipeModel(url: recipe.url,
+                                                              title: recipe.label,
                                                               // extract food (ingredient name) property from ingredients array
                                                               ingredients: recipe.ingredients.map{ $0.food },
                                                               image: image,
@@ -95,13 +96,13 @@ class NetworkService: NetworkProcotol {
             completion(nil)
             return
         }
-
+        
         let destination: DownloadRequest.Destination = { _, _ in
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileURL = documentsURL.appendingPathComponent("image.jpg")
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
-
+        
         AF.download(url, to: destination)
             .responseData { response in
                 if let data = response.value {

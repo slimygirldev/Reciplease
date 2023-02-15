@@ -32,8 +32,8 @@ class MainCoordinator: Coordinator {
     func goToRecipeDetailPage(_ recipeModel: RecipeModel) {
         let viewModel = RecipeDetailViewModel(recipeModel: recipeModel)
         let controller = RecipeDetailViewController(viewModel)
-        controller.onFavorite = viewModel.addToFavoriteList
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
+    
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 struct RecipeModel {
+    var url: String
     var title: String
     var ingredients: [String]
     var image: UIImage?

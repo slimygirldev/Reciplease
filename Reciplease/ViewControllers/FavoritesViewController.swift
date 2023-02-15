@@ -15,7 +15,14 @@ class FavoritesViewController: UIViewController {
 
     private let viewModel: FavoriteViewModel
 
-    private var recipeListeCollectionView: RecipeListCollectionView?
+    private lazy var recipeListCollectionView: RecipeListCollectionView = {
+        let collectionView = RecipeListCollectionView(recipes: viewModel.recipeList.value)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.onSelected = { [weak self] recipe in
+            self?.coordinator?.goToRecipeDetailPage(recipe)
+        }
+        return collectionView
+    }()
 
     // MARK: - Methods
 
@@ -30,23 +37,41 @@ class FavoritesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadFavorites()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-
+        setupSubviews()
         setupConstraints()
-        addView()
+        setupBindings()
     }
 
-    private func addView() {
-
+    private func setupSubviews() {
+        view.addSubview(recipeListCollectionView)
     }
 
     private func setupConstraints() {
-
+        NSLayoutConstraint.activate([
+            recipeListCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            recipeListCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            recipeListCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            recipeListCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 
+    private func setupBindings() {
+        viewModel.recipeList.bind { [weak self] recipeList in
+            DispatchQueue.main.async {
+                self?.recipeListCollectionView.recipes = recipeList
+                self?.recipeListCollectionView.reloadData()
+            }
+        }
+    }
 }

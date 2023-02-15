@@ -147,12 +147,14 @@ struct RecipeMiniatureCollectionViewCell_Representable: UIViewRepresentable {
 struct RecipeMiniatureCollectionViewCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(title: "Pizza Margarita",
+            RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(url: "",
+                                                                               title: "Pizza Margarita",
                                                                                ingredients: ["Tomato","Mozzarella","Basilic", "Tomato","Mozzarella","Basilic"],
                                                                                image: nil, ingredientLines: nil))
 
 
-            RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(title: "Pizza Margarita",
+            RecipeMiniatureCollectionViewCell_Representable(model: RecipeModel(url: "",
+                                                                               title: "Pizza Margarita",
                                                                                ingredients: ["Tomato","Mozzarella","Basilic", "olives", "mustrad", "cheese"],
                                                                                image: nil, ingredientLines: nil))
             .previewDisplayName("Long name & ingredients list preview")

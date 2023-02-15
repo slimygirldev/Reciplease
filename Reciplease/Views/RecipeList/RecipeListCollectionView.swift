@@ -13,7 +13,7 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
 
     private let horizontalPadding: Int = 16
 
-    private let recipes: [RecipeModel]
+    var recipes: [RecipeModel] = []
 
     var onSelected: ((_ recipe: RecipeModel) -> Void)?
 
@@ -44,7 +44,6 @@ class RecipeListCollectionView: UICollectionView, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedRecipe = recipes[indexPath.row]
-//        viewModel.selectedRecipe.value = selectedRecipe
         onSelected?(selectedRecipe)
     }
 

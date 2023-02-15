@@ -13,7 +13,7 @@ class RecipeDetailViewController: UIViewController {
     
     weak var coordinator: MainCoordinator?
 
-    var onFavorite: ((_ recipe: RecipeModel) -> Void)?
+//    var onFavorite: ((_ recipe: RecipeModel) -> Void)?
 
     private let alertProvider: AlertProvider = AlertProvider()
 
@@ -63,9 +63,7 @@ class RecipeDetailViewController: UIViewController {
     }
 
     @objc func handleFavoriteRecipe() {
-        viewModel.isFavorite.value = true
-        viewModel.addToFavoriteList()
-        // add recipe in core data ()
+        viewModel.handleFavoriteState()
     }
 
     private func setUpBinders() {
