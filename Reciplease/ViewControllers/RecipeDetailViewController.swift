@@ -78,7 +78,6 @@ class RecipeDetailViewController: UIViewController {
     private func setupViews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-//        view.addSubview(goToDirectionButton)
     }
 
     private func setupConstraints() {

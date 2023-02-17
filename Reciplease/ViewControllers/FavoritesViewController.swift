@@ -21,7 +21,19 @@ class FavoritesViewController: UIViewController {
         collectionView.onSelected = { [weak self] recipe in
             self?.coordinator?.goToRecipeDetailPage(recipe)
         }
+        collectionView.isHidden = true
         return collectionView
+    }()
+
+    private lazy var emptyMessageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No favorites recipe yet.\n Go to search to add your first recipe to the list."
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .systemBlue
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     // MARK: - Methods
@@ -54,6 +66,7 @@ class FavoritesViewController: UIViewController {
     }
 
     private func setupSubviews() {
+        view.addSubview(emptyMessageLabel)
         view.addSubview(recipeListCollectionView)
     }
 
@@ -62,13 +75,22 @@ class FavoritesViewController: UIViewController {
             recipeListCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             recipeListCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             recipeListCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            recipeListCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            recipeListCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            emptyMessageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyMessageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emptyMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            emptyMessageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 
     private func setupBindings() {
         viewModel.recipeList.bind { [weak self] recipeList in
             DispatchQueue.main.async {
+                if !recipeList.isEmpty {
+                    self?.emptyMessageLabel.isHidden = true
+                    self?.recipeListCollectionView.isHidden = false
+                }
                 self?.recipeListCollectionView.recipes = recipeList
                 self?.recipeListCollectionView.reloadData()
             }
