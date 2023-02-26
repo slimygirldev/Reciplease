@@ -12,9 +12,11 @@ import CoreData
 final class FavoriteViewModel {
     var recipeList: Observable<[RecipeModel]>
 
-    init() {
+    private var coreDataStack: CoreDataStack
+    init(_ isTesting: Bool = false) {
+        coreDataStack = CoreDataStack.shared
+        coreDataStack.isTesting = isTesting
         self.recipeList = Observable([])
-        loadFavorites()
     }
 
     private func makeRecipe(_ requestResults: [RecipeDataModel]) -> [RecipeModel] {
@@ -33,7 +35,7 @@ final class FavoriteViewModel {
     func loadFavorites() {
         let fetchRequest = RecipeDataModel.fetchRequest()
         do {
-            let managedContext = CoreDataStack.shared.managedContext
+            let managedContext = coreDataStack.managedContext
             let results: [RecipeDataModel] = try managedContext.fetch(fetchRequest)
 
             let recipeModels = makeRecipe(results)

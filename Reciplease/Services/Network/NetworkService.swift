@@ -32,6 +32,7 @@ class NetworkService: NetworkProcotol {
     // MARK: - Properties
 
     var networkClient: URLSession
+    private var sessionManager: Alamofire.Session
 
     private let type: String = "public"
 
@@ -39,6 +40,7 @@ class NetworkService: NetworkProcotol {
 
     init(urlSession: URLSession) {
         networkClient = urlSession
+        sessionManager = Alamofire.Session(configuration: networkClient.configuration)
     }
 
     // MARK: - Request
@@ -57,8 +59,8 @@ class NetworkService: NetworkProcotol {
         guard let url = URL(string: "https://api.edamam.com/api/recipes/v2?") else {
             return
         }
-        AF.request(url, method: .get,
-                   parameters: parameters)
+        sessionManager.request(url, method: .get,
+                               parameters: parameters)
         .responseDecodable(of: SearchResponse.self) { [weak self] response in
             switch response.result {
             case .success(let searchResponse):

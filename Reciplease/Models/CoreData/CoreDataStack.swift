@@ -18,16 +18,35 @@ final class CoreDataStack {
         return CoreDataStack.shared.persistentContainer.viewContext
     }
 
-    private init() {}
+    var isTesting: Bool = false
+
+    private init(_ isTesting: Bool = false) {
+        self.isTesting = isTesting
+    }
     
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: persistentContainerName)
-        container.loadPersistentStores { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo) for: \(storeDescription.description)")
+        if isTesting {
+            let description = NSPersistentStoreDescription()
+            description.url = URL(fileURLWithPath: "/dev/null")
+            description.type = NSInMemoryStoreType
+            description.shouldAddStoreAsynchronously = false
+            let container = NSPersistentContainer(name: persistentContainerName)
+            container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
+            container.persistentStoreDescriptions = [description]
+            container.loadPersistentStores { _, error in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
             }
-        }
-        return container
+            return container
+        } else {
+            let container = NSPersistentContainer(name: persistentContainerName)
+            container.loadPersistentStores { storeDescription, error in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo) for: \(storeDescription.description)")
+                }
+            }
+            return container}
     }()
 
     lazy var managedContext: NSManagedObjectContext = persistentContainer.viewContext

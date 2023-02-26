@@ -26,7 +26,7 @@
 		988C526B296C5CFE00CDFD64 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526A296C5CFE00CDFD64 /* NetworkService.swift */; };
 		988C526D296DB26900CDFD64 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526C296DB26900CDFD64 /* RecipeModel.swift */; };
 		988C526F296DD14200CDFD64 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C526E296DD14200CDFD64 /* SearchTableView.swift */; };
-		988C5274296EE3E600CDFD64 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 988C5273296EE3E600CDFD64 /* response.json */; };
+		988C5274296EE3E600CDFD64 /* Recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 988C5273296EE3E600CDFD64 /* Recipes.json */; };
 		988C5277296F1F6600CDFD64 /* SearchBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5276296F1F6600CDFD64 /* SearchBarTableViewCell.swift */; };
 		988C527C296F25FE00CDFD64 /* ItemListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C527B296F25FE00CDFD64 /* ItemListTableViewCell.swift */; };
 		9894CAC029706E69007B7995 /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CABF29706E69007B7995 /* AlertProvider.swift */; };
@@ -47,6 +47,8 @@
 		9894CAEA29783A00007B7995 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9894CAE929783A00007B7995 /* FavoritesCoordinator.swift */; };
 		98C594D42987E1D10021F7F9 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C594D32987E1D10021F7F9 /* FavoriteViewModel.swift */; };
 		98CCC86A299F9AFA00D41685 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CCC869299F9AFA00D41685 /* RecipleaseTests.swift */; };
+		98CCC87129A2898C00D41685 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CCC87029A2898C00D41685 /* MockURLProtocol.swift */; };
+		98CCC87229A28EFA00D41685 /* Recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 988C5273296EE3E600CDFD64 /* Recipes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +85,7 @@
 		988C526A296C5CFE00CDFD64 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		988C526C296DB26900CDFD64 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		988C526E296DD14200CDFD64 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
-		988C5273296EE3E600CDFD64 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		988C5273296EE3E600CDFD64 /* Recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Recipes.json; sourceTree = "<group>"; };
 		988C5276296F1F6600CDFD64 /* SearchBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTableViewCell.swift; sourceTree = "<group>"; };
 		988C527B296F25FE00CDFD64 /* ItemListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewCell.swift; sourceTree = "<group>"; };
 		9894CABF29706E69007B7995 /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		98C594D32987E1D10021F7F9 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		98CCC867299F9AFA00D41685 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98CCC869299F9AFA00D41685 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
+		98CCC87029A2898C00D41685 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +163,6 @@
 			children = (
 				9894CAD12971B7ED007B7995 /* Config */,
 				9894CAC3297199AB007B7995 /* Core */,
-				988C5270296EDE5F00CDFD64 /* Mock */,
 				988C52592968C12100CDFD64 /* AppleGenerated */,
 				988C52512968BF3400CDFD64 /* Navigation */,
 				988C525B296C3F5300CDFD64 /* Services */,
@@ -250,7 +252,8 @@
 		988C5270296EDE5F00CDFD64 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				988C5273296EE3E600CDFD64 /* response.json */,
+				988C5273296EE3E600CDFD64 /* Recipes.json */,
+				98CCC87029A2898C00D41685 /* MockURLProtocol.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 		98CCC868299F9AFA00D41685 /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				988C5270296EDE5F00CDFD64 /* Mock */,
 				98CCC869299F9AFA00D41685 /* RecipleaseTests.swift */,
 			);
 			path = RecipleaseTests;
@@ -436,7 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				988C5274296EE3E600CDFD64 /* response.json in Resources */,
+				988C5274296EE3E600CDFD64 /* Recipes.json in Resources */,
 				988C524A2968BDBF00CDFD64 /* LaunchScreen.storyboard in Resources */,
 				988C52472968BDBF00CDFD64 /* Assets.xcassets in Resources */,
 			);
@@ -446,6 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98CCC87229A28EFA00D41685 /* Recipes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98CCC86A299F9AFA00D41685 /* RecipleaseTests.swift in Sources */,
+				98CCC87129A2898C00D41685 /* MockURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

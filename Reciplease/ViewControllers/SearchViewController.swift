@@ -30,6 +30,8 @@ class SearchViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 24)
         button.backgroundColor = .systemMint
         button.layer.cornerRadius = 10
+        button.accessibilityHint = ""
+        button.accessibilityLabel = ""
         button.addTarget(self, action: #selector(searchRecipesButtonDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -42,6 +44,8 @@ class SearchViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = UIImage(systemName: "magnifyingglass")
         tabBarItem.title = "Search"
+        tabBarItem.accessibilityHint = ""
+        tabBarItem.accessibilityLabel = ""
     }
 
     required init?(coder: NSCoder) {
@@ -55,6 +59,8 @@ class SearchViewController: UIViewController {
         title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.accessibilityHint = ""
+        navigationController?.navigationBar.accessibilityLabel = ""
 
         setupViews()
         setupConstraints()
